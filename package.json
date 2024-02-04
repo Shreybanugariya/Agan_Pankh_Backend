@@ -1,0 +1,29 @@
+{
+  "name": "againpankh_examo_portal",
+  "version": "1.0.0",
+  "description": "Exam Portal for GOV Exams",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "AganPankh",
+    "GPSC",
+    "UPSC",
+    "Online",
+    "Test",
+    "Practice"
+  ],
+  "author": "Shrey Banugaria",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "google-auth-library": "^9.6.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1",
+    "morgan": "^1.10.0"
+  }
+}
