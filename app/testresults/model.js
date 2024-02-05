@@ -5,6 +5,7 @@ const testResultSchema = new mongoose.Schema({
   testId: { type: mongoose.Schema.Types.ObjectId, ref: 'Tests', required: true },
   answers: [
     {
+      index:  { type: Number, required: true },
       question: { type: mongoose.Schema.Types.ObjectId, ref: 'Tests.questions' },
       selectedOptionIndex: { type: Number, required: true },
     },
