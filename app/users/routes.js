@@ -4,7 +4,7 @@ const authMiddleware = require('../common/middleware')
 const { createUser, updateUser } = require('./validators')
 
 router.get('/:id', authMiddleware, controllers.getUser)
-router.post('/auth/google-singin', createUser, controllers.googleSingIn)
+router.post('/auth/google-signin', createUser, controllers.googleSingIn)
 router.put('/:id', updateUser, authMiddleware, controllers.updateUser)
 
 module.exports = router;
