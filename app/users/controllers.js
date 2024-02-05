@@ -20,4 +20,33 @@ controllers.googleSingIn = async (req, res) => {
     }
 }
 
+controllers.getUser = async (req, res) => {
+    try {
+        if (!req.user.isAdmin && req.user._id.toString() !== req.params.id) return res.status(401).json({ message: 'Access Denied' })
+        const user = await User.findById(req.params.id)
+        if (!user) return res.status(401).json({ message: 'User not Found' })
+        return res.reply(message.success('User'), { data: user })
+    }
+    catch (error) {
+        console.error(error);
+        res.status(401).json({ success: false, error: 'User not found' });
+    }
+}
+
+controllers.updateUser = async (req, res) => {
+    try {
+        req.body = _.pick(req.body)
+        const { username, contactNo } = req.body
+        const user = await User.findById(req.params.id)
+        if (!user) return res.status(401).json({ message: 'User not Found' })
+
+        await User.updateOne({ _id: req.params.id }, { username, contactNo } )
+        return res.reply(message.success('User'), { data: user })
+    }
+    catch (error) {
+        console.error(error);
+        res.status(401).json({ success: false, error: 'User not found' });
+    }
+}
+
 module.exports = controllers

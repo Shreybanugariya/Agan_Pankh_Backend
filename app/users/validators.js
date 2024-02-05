@@ -8,9 +8,7 @@ validators.createUser = (req, res, next) => {
 
 validators.updateUser = (req, res, nex) => {
     if (!req.parms.id) return res.reply(messages.required_field('id'))
-    const {} = req.body
-    // if (!req.parms.i) return res.reply(messages.required_field('id'))
-    // if (!req.parms.id) return res.reply(messages.required_field('id'))
+    if (!req.bodycontactNo) return res.reply(messages.required_field('contactNo'))
 }
 
 module.exports = validators
