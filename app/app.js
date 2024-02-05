@@ -70,7 +70,7 @@ app.use(errorHandler);
 const httpServer = http.createServer(app);
 
 httpServer.timeout = 10000;
-httpServer.listen(env.PORT, '0.0.0.0', () => console.yellow(`Spinning on ${env.PORT}`));
+httpServer.listen(env.PORT, '0.0.0.0', () => console.green(`Spinning on ${env.PORT}`));
 
 
 module.exports = httpServer;
