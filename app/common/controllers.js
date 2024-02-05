@@ -9,19 +9,21 @@ controllers.createPayment = async (req, res) => {
         key_secret: RAZORPAY_KEY_SECRET,
     })
 
-    const order = await razorpay.orders.create({
+    const { _id, email, username, contactNo, googleId } = req.user
+    const options = {
         amount: amount * 100, // rzp format with paise
         currency: 'INR',
-        receipt: "receipt#1", //Receipt no that corresponds to this Order,
+        receipt: `Payment of User with GoogleId:${googleId}`, //Receipt no that corresponds to this Order,
         payment_capture: true,
         notes: {
-         orderType: "Preminum"
+         orderType: "Preminum",
+         user: _id,
+         userEmail: email
         }
-       })
+    }
     try {
         const response = await razorpay.orders.create(options)
-        return res.json({ order_id: response.id, currency: response.currency, amount: response.amount,
-        })
+        return res.status(200).json({ message: 'Payment Success', order_id: response.id, currency: response.currency, amount: response.amount })
     } catch (err) {
        res.status(400).send('Not able to create order. Please try again!');
     }
