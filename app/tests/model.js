@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const testNUmber = requr
 
 const questionSchema = new mongoose.Schema({
     index: { type: Number, required: true },
