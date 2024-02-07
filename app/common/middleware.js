@@ -8,7 +8,7 @@ const authenticateUser = async (req, res, next) => {
   
     try {
       const decoded = jwt.verify(token, JWT_SECRET_KEY);
-      const user = await User.findById(decoded.userId);
+      const user = await User.findOne({ googleId: decoded.googleId });
       if (!user) return res.status(401).json({ error: 'Unauthorized - Invalid user' });
       if (!user.isActive) return res.status(401).json({ error: 'User account Deleted' });
       req.user = user

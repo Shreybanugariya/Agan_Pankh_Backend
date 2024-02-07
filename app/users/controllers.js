@@ -10,8 +10,16 @@ controllers.googleSingIn = async (req, res) => {
         const { idToken } = req.body;
         const userData = await verifyGoogleToken(idToken);
         const { sub, email } =  userData
+        const existingUser = await User.findOne({ email }).lean();
+        if (existingUser) {
+            const authToken = jwt.sign({ googleId: sub }, JWT_SECRET_KEY, { expiresIn: '300d' })
+            const user = await User.updateOne({ email }, { googleId: sub, authToken })
+            user.isNew = false
+            return res.reply(message.success('Login'), { data: user })
+        }
         const authToken = jwt.sign({ googleId: sub }, JWT_SECRET_KEY, { expiresIn: '300d' })
         const user = await User.create({ email, googleId: sub, authToken })
+        user.isNew = true
         return res.reply(message.success('Login'), { data: user })
     }
     catch (error) {
