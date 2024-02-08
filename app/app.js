@@ -5,7 +5,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const path = require('path');
 const routes = require('../app/routes');
-const env = require('dotenv')
 
 const app = express();
 
@@ -70,7 +69,7 @@ app.use(errorHandler);
 const httpServer = http.createServer(app);
 
 httpServer.timeout = 10000;
-httpServer.listen(env.PORT, '0.0.0.0', () => console.green(`Spinning on ${env.PORT}`));
+httpServer.listen(process.env.PORT, '0.0.0.0', () => console.green(`Spinning on ${process.env.PORT}`));
 
 
 module.exports = httpServer;
