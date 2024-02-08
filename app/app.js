@@ -5,7 +5,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const path = require('path');
 const routes = require('../app/routes');
-const env = process.env
+const env = require('dotenv')
 
 const app = express();
 

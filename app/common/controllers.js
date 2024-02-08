@@ -23,6 +23,7 @@ controllers.createPayment = async (req, res) => {
     }
     try {
         const response = await razorpay.orders.create(options)
+        console.log('response', response)
         return res.status(200).json({ message: 'Payment Success', order_id: response.id, currency: response.currency, amount: response.amount })
     } catch (err) {
        res.status(400).send('Not able to create order. Please try again!');
