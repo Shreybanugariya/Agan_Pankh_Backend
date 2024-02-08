@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
   googleId: { type: String, required: true, unique: true },
   username: { type: String },
   email: { type: String, required: true, unique: true },
-  contactNo: { type: Number, unique: true, maxLength: 10 },
+  contactNo: { type: Number, maxLength: 10 },
   password: { type: String, required: false }, // Required For Admin
   isAdmin: { type: Boolean, default: false },
   preminum: { type: Boolean, default: false },
