@@ -1,7 +1,7 @@
 const controllers = {}
 const RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY
 const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET
-const amount = process.env.PREMINUM_AMOUNT || 100
+const amount = process.env.PREMINUM_AMOUNT || 499
 
 controllers.createPayment = async (req, res) => {
     const razorpay = new Razorpay({
@@ -13,7 +13,7 @@ controllers.createPayment = async (req, res) => {
     const options = {
         amount: amount * 100, // rzp format with paise
         currency: 'INR',
-        receipt: `Payment of User with GoogleId:${googleId}`, //Receipt no that corresponds to this Order,
+        receipt: `${googleId}`, //Receipt no that corresponds to this Order,
         payment_capture: true,
         notes: {
          orderType: "Preminum",
