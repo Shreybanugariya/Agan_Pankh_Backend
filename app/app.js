@@ -18,7 +18,7 @@ const corsOptions = {
 const routeConfig = (req, res, next) => {
     req.sRemoteAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     req.platform = req.headers.platform;
-    if (req.path === '/ping') return res.status(200).send({ mode: env.NODE_ENV });
+    if (req.path === '/ping') return res.status(200).send({ mode: process.env.NODE_ENV });
     res.reply = ({ code, prefix, message }, data = {}, header = undefined) => {
         if (prefix) {
             // eslint-disable-next-line no-param-reassign
