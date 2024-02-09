@@ -21,7 +21,6 @@ const routeConfig = (req, res, next) => {
     if (req.path === '/ping') return res.status(200).send({ mode: process.env.NODE_ENV });
     res.reply = ({ code, prefix, message }, data = {}, header = undefined) => {
         if (prefix) {
-            // eslint-disable-next-line no-param-reassign
             message = prefix + message;
         }
         return res.status(code).header(header).json({ message, data });
@@ -47,6 +46,7 @@ const errorHandler = function (err, req, res, next) {
 };
 
 app.disable('etag');
+app.disable('x-powered-by');
 app.enable('trust proxy');
 app.set('view engine', 'ejs');
 app.get('/refresh-token/:id?', (req, res) => {
