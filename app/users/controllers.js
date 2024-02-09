@@ -14,8 +14,9 @@ controllers.googleSingIn = async (req, res) => {
         if (existingUser) {
             const authToken = jwt.sign({ googleId: sub }, JWT_SECRET_KEY, { expiresIn: '300d' })
             const user = await User.updateOne({ email }, { googleId: sub, authToken })
-            user.isNew = false
-            return res.reply(message.success('Login'), { data: user })
+            existingUser.isNew = false
+            existingUser.authToken = authToken
+            return res.reply(message.success('Login'), { data: existingUser })
         }
         const authToken = jwt.sign({ googleId: sub }, JWT_SECRET_KEY, { expiresIn: '300d' })
         const user = await User.create({ email, googleId: sub, authToken })
@@ -31,7 +32,7 @@ controllers.googleSingIn = async (req, res) => {
 controllers.getUser = async (req, res) => {
     try {
         if (!req.user.isAdmin && req.user._id.toString() !== req.params.id) return res.status(401).json({ message: 'Access Denied' })
-        const user = await User.findById(req.params.id)
+        const user = await User.findById(req.params.id, { authToken: 0, __v: 0})
         if (!user) return res.status(401).json({ message: 'User not Found' })
         return res.reply(message.success('User'), { data: user })
     }
@@ -43,13 +44,12 @@ controllers.getUser = async (req, res) => {
 
 controllers.updateUser = async (req, res) => {
     try {
-        req.body = _.pick(req.body)
-        const { username, contactNo } = req.body
-        const user = await User.findById(req.params.id)
+        req.body = _.pick(req.body, ['username', 'contactNo', 'password', 'city', 'isActive'])
+        const user = await User.findById(req.params.id, { authToken: 0 })
         if (!user) return res.status(401).json({ message: 'User not Found' })
 
-        await User.updateOne({ _id: req.params.id }, { username, contactNo } )
-        return res.reply(message.success('User'), { data: user })
+        await User.updateOne({ _id: req.params.id }, req.body )
+        return res.reply(message.success('User Update'))
     }
     catch (error) {
         console.error(error);

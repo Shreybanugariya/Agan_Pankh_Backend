@@ -34,7 +34,7 @@ controllers.accessTestQuestions = async (req, res) => {
         const test = await Tests.findById(req.params.id).lean()
         if (!test) return res.status(404).json({ message: 'Test not found'})
         if (!test.questions.length) return res.status(404).json({ message: 'Test Questions not found'})
-        return res.reply(message.success('Test Fetch'), { data: tests })
+        return res.reply(message.success('Test Fetch'), { data: test })
     } catch (error) {
         console.error(error);
         res.status(401).json({ success: false, error: 'Something Went Wrong' });

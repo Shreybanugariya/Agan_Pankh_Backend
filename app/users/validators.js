@@ -6,9 +6,11 @@ validators.createUser = (req, res, next) => {
     next();
 }
 
-validators.updateUser = (req, res, nex) => {
-    if (!req.parms.id) return res.reply(messages.required_field('id'))
-    if (!req.bodycontactNo) return res.reply(messages.required_field('contactNo'))
+validators.updateUser = (req, res, next) => {
+    if (!req.params.id) return res.reply(messages.required_field('id'));
+    if (!req.body.contactNo) return res.reply(messages.required_field('contactNo'));
+    if (!req.body.city) return res.reply(messages.required_field('city'));
+    next();
 }
 
 module.exports = validators
