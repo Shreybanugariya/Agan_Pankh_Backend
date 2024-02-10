@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const testResultSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
   testId: { type: mongoose.Schema.Types.ObjectId, ref: 'Tests', required: true },
+  isCompleted: { type: Boolean, default: false }, // Whenever the test is submited or the time completes this field will have value: true
   answers: [
     {
       index:  { type: Number, required: true },
