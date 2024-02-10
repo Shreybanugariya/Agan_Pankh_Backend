@@ -27,13 +27,13 @@ controllers.getTestLists = async (req, res) => {
         return res.reply(message.success('Test Fetch'), { data: tests })
     } catch (error) {
         console.error(error);
-        res.status(401).json({ success: false, error: 'Invalid Google Sign-In token' });
+        res.status(401).json({ success: false, error: 'Something went wrong' });
     }
 }
 
 controllers.accessTestQuestions = async (req, res) => {
     try {
-        if (!req.user.hasPreminum) return res.reply(messages.no_prefix('Payment not completed, Please try again later'));
+        if (!req.user.hasPreminum) return res.reply(message.no_prefix('Payment not completed, Please try again later'));
 
         const test = await Tests.findById(req.params.id).lean()
         if (!test) return res.status(404).json({ message: 'Test not found'})
@@ -53,12 +53,11 @@ controllers.accessTestQuestions = async (req, res) => {
 controllers.startTest = async (req, res) => {
     try {
         const { userId, testId } = req.body;
-
         //Validations
-        if (!req.user.hasPreminum) return res.reply(messages.no_prefix('Payment not completed, Please try again later'));
+        if (!req.user.hasPreminum) return res.reply(message.no_prefix('Payment not completed, Please try again later'));
         const test = await Tests.findById(testId).lean()
-        if (!test) return res.reply(messages.not_found('Test'))
-        if (!(await checkPreviousTestCleared())) return res.reply(messages.no_prefix('Previous Test not cleared, please complete previous test'))
+        if (!test) return res.reply(message.not_found('Test'))
+        if (!(await checkPreviousTestCleared())) return res.reply(message.no_prefix('Previous Test not cleared, please complete previous test'))
 
         const currentTime = new Date();
         const endTime = new Date(currentTime.getTime() + (60 * 60 * 1000))
