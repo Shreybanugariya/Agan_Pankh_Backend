@@ -13,7 +13,7 @@ controllers.getTestLists = async (req, res) => {
         for (const t of tests) {
             t.isLocked = true
             t.testGiven = false
-            if (!user.premium) {
+            if (!user.hasPreminum) {
                 if (t.testIndex === 0) t.isLocked = false
             } else {
                 if (t.testIndex <= user.currentTestIndex) t.isLocked = false

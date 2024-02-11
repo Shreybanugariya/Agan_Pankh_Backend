@@ -1,12 +1,13 @@
-const controllers = {}
+const User = require('../users/model')
 const RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY_ID
 const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET
 const SECRET_KEY = process.env.SECRET_KEY || 'Agan_pankh'
-const amount = process.env.PREMINUM_AMOUNT || 499
+const amount = process.env.PREMINUM_AMOUNT || 100
 const crypto = require('crypto')
 
 const Razorpay = require('razorpay')
 
+const controllers = {}
 controllers.createOrder = async (req, res) => {
     const razorpay = new Razorpay({
         key_id: RAZORPAY_KEY_ID,
@@ -40,13 +41,50 @@ controllers.paymentCapture = async (req, res) => {
     const digest = data.digest('hex')
     console.log(req.headers['x-razorpay-signature'])
     if (digest === req.headers['x-razorpay-signature']) {
-        console.log('request is legit')
-        res.json({
-            status: 'ok'
-        })
+        await User.updateOne({ _id: req.user._id }, { hasPreminum: true })
+        res.json({status: 'ok'})
     } else {
         res.status(400).send('Invalid signature');
     }
+}
+
+controllers.createUPILink = async (req, res) => {
+    try {
+        const { hasPreminum, city, contactNo, username, email } = req.user
+        if (hasPreminum) return res.reply(message.no_prefix('You already have hasPreminum'))
+        if (!city || !contactNo) return res.reply(message.no_prefix('City or Contact No not provided. Please update user details'))
+
+        const razorpay = new Razorpay({
+            key_id: RAZORPAY_KEY_ID,
+            key_secret: RAZORPAY_KEY_SECRET,
+        })
+
+        const upiLinkOptions = {
+            amount, //49900
+            currency: "INR",
+            accept_partial: false,
+            description: "Get Preminum for the bright future",
+            customer: {
+                name: username || '',
+                email,
+                contact: `${contactNo}`
+            },
+            notify: {
+                sms: true,
+                email: false
+            },
+            reminder_enable: true,
+            notes: {
+                preminum: 'Test hasPreminum'
+            },
+        }
+
+        const data = await razorpay.paymentLink.create(upiLinkOptions)
+        if (data.short_url) return res.reply(message.success('Payment Link Fetched'),  data)
+    } catch (error) {
+        console.log(error)
+        res.status(400).send('Not able to generate payment link. Please try again!');
+     }
 }
 
 module.exports = controllers
