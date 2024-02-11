@@ -6,13 +6,12 @@ const testResultSchema = new mongoose.Schema({
   isCompleted: { type: Boolean, default: false }, // Whenever the test is submited or the time completes this field will have value: true
   answers: [
     {
-      index:  { type: Number, required: true },
       question: { type: mongoose.Schema.Types.ObjectId, ref: 'Tests.questions' },
       selectedOptionIndex: { type: Number, required: true },
     },
   ],
   score: { type: Number, default: 0 },
-  submittedAt: { type: Date, default: Date.now },
+  submittedAt: { type: Date },
 });
 
 const TestResult = mongoose.model('TestResult', testResultSchema);

@@ -57,4 +57,12 @@ controllers.updateUser = async (req, res) => {
     }
 }
 
+controllers.getLoggedInUser = async (req, res) => {
+    try {
+        return res.reply(message.success('Logged In User details fetch'), req.user)
+    } catch (error) {
+        return res.status(404).json({ message: 'Somethings went wrong while fetching the Loggedin User' })
+    }
+}
+
 module.exports = controllers

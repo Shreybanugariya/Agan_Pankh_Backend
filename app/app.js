@@ -5,6 +5,9 @@ const cors = require('cors');
 const morgan = require('morgan');
 const path = require('path');
 const routes = require('../app/routes');
+const cron = require('node-cron');
+const TestSession = require('./tests/testSession.model')
+const { submitTestAndCalulateResult } = require('./common/functions')
 
 const app = express();
 
@@ -71,5 +74,22 @@ const httpServer = http.createServer(app);
 httpServer.timeout = 10000;
 httpServer.listen(process.env.PORT, '0.0.0.0', () => console.green(`Spinning on ${process.env.PORT}`));
 
+//Cron
+
+cron.schedule('* * * * *', async () => {
+    try {
+      const currentTime = new Date();
+      const expiredSessions = await TestSession.find({ endTime: { $lte: currentTime } });
+  
+      for (const session of expiredSessions) {
+        console.log('Here in for Loop')
+        const { userId, testId } = session
+        await submitTestAndCalulateResult({ userId, testId });
+        await TestSession.findByIdAndDelete(session._id);
+      }
+    } catch (error) {
+      console.error('Error processing cron job:', error);
+    }
+  });
 
 module.exports = httpServer;
