@@ -77,6 +77,7 @@ controllers.createUPILink = async (req, res) => {
             notes: {
                 preminum: 'Test hasPreminum'
             },
+            callback_url: 'https://agan-pankh-frontend.vercel.app/'
         }
 
         const data = await razorpay.paymentLink.create(upiLinkOptions)
