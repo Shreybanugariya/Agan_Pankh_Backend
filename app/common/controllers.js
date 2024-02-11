@@ -40,8 +40,10 @@ controllers.paymentCapture = async (req, res) => {
     data.update(JSON.stringify(req.body))
     const digest = data.digest('hex')
     console.log(req.headers['x-razorpay-signature'])
+    console.log(req.body)
     if (digest === req.headers['x-razorpay-signature']) {
-        await User.updateOne({ _id: req.user._id }, { hasPreminum: true })
+
+        // await User.updateOne({ _id: req.user._id }, { hasPreminum: true })
         res.json({status: 'ok'})
     } else {
         res.status(400).send('Invalid signature');
@@ -50,7 +52,7 @@ controllers.paymentCapture = async (req, res) => {
 
 controllers.createUPILink = async (req, res) => {
     try {
-        const { hasPreminum, city, contactNo, username, email } = req.user
+        const { hasPreminum, city, contactNo, username, email, googleId } = req.user
         if (hasPreminum) return res.reply(message.no_prefix('You already have hasPreminum'))
         if (!city || !contactNo) return res.reply(message.no_prefix('City or Contact No not provided. Please update user details'))
 
@@ -67,7 +69,8 @@ controllers.createUPILink = async (req, res) => {
             customer: {
                 name: username || '',
                 email,
-                contact: `${contactNo}`
+                contact: `${contactNo}`,
+                googleId: `${googleId}`,
             },
             notify: {
                 sms: true,
@@ -75,7 +78,7 @@ controllers.createUPILink = async (req, res) => {
             },
             reminder_enable: true,
             notes: {
-                preminum: 'Test hasPreminum'
+                preminum: 'Test Premium'
             },
             callback_url: 'https://agan-pankh-frontend.vercel.app/'
         }
