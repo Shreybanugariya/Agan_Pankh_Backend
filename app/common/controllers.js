@@ -44,7 +44,6 @@ controllers.paymentCapture = async (req, res) => {
     const data = crypto.createHmac('sha256', SECRET_KEY)
     data.update(JSON.stringify(req.body))
     const digest = data.digest('hex')
-    console.log(req.headers['x-razorpay-signature'])
     const { payload } = req.body
     const obj = payload.payment.entity
     if (digest === req.headers['x-razorpay-signature']) {
