@@ -9,6 +9,11 @@ const Razorpay = require('razorpay')
 
 const controllers = {}
 controllers.createOrder = async (req, res) => {
+
+    const { hasPreminum, city, contactNo, email } = req.user
+    if (hasPreminum) return res.reply(message.no_prefix('You already have hasPreminum'))
+    if (!city || !contactNo) return res.reply(message.no_prefix('City or Contact No not provided. Please update user details'))
+
     const razorpay = new Razorpay({
         key_id: RAZORPAY_KEY_ID,
         key_secret: RAZORPAY_KEY_SECRET,
@@ -16,13 +21,13 @@ controllers.createOrder = async (req, res) => {
 
     // const { _id, email, username, contactNo, googleId } = req.user
     const options = {
-        amount: amount * 100, // rzp format with paise
+        amount: amount,
         currency: 'INR',
         receipt: `123`, //Receipt no that corresponds to this Order,
         payment_capture: true,
         notes: {
          orderType: "Preminum",
-         user: 'test',
+         user: email,
          userEmail: 'test'
         }
     }
@@ -41,10 +46,10 @@ controllers.paymentCapture = async (req, res) => {
     const digest = data.digest('hex')
     console.log(req.headers['x-razorpay-signature'])
     const { payload } = req.body
-    const obj = payload.payment.entity[0]
+    const obj = payload.payment.entity
     if (digest === req.headers['x-razorpay-signature']) {
-
-        // await User.updateOne({ _id: req.user._id }, { hasPreminum: true })
+        const googleId = obj.notes.googleId
+        await User.updateOne({ googleId }, { hasPreminum: true })
         res.json({status: 'ok'})
     } else {
         res.status(400).send('Invalid signature');
@@ -71,15 +76,14 @@ controllers.createUPILink = async (req, res) => {
                 name: username || '',
                 email,
                 contact: `${contactNo}`,
-                googleId: `${googleId}`,
             },
             notify: {
-                sms: true,
+                sms: false,
                 email: false
             },
             reminder_enable: true,
             notes: {
-                preminum: 'Test Premium'
+                googleId: `${googleId}`,
             },
             callback_url: 'https://agan-pankh-frontend.vercel.app/'
         }
