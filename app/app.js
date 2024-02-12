@@ -75,6 +75,7 @@ cron.schedule('*/10 * * * * *', async () => {
       const expiredSessions = await TestSession.find({ endTime: { $lte: currentTime } });
   
       for (const session of expiredSessions) {
+        console.log('in for loop')
         const { userId, testId } = session
         await submitTestAndCalulateResult({ userId, testId });
         await TestSession.findByIdAndDelete(session._id);

@@ -36,13 +36,13 @@ controllers.accessTestQuestions = async (req, res) => {
     try {
         if (!req.user.hasPreminum) return res.reply(message.no_prefix('Payment not completed, Please try again later'));
 
-        const test = await Tests.findById(req.params.id, { 'questions.options.isCorrect': -1 }).lean()
+        const test = await Tests.findById(req.params.id, { 'questions.options.isCorrect': 0 }).lean()
         if (!test) return res.status(404).json({ message: 'Test not found'})
         if (!test.questions.length) return res.status(404).json({ message: 'Test Questions not found'})
 
         const testresults = await TestResult.findOne({ userId: req.user._id, testId: test._id }, { isCompleted: 1, score: 1}).lean();
         if (testresults && !testresults.isCompleted) {
-            return res.status(200).json({ message: 'Test is on going', tests, questionsAttempted: testresults.answers })
+            return res.status(200).json({ message: 'Test is on going', test, questionsAttempted: testresults.answers })
         } else if (testresults && testresults.isCompleted) return res.status(200).json({ message: 'Test completed', score: testresults.score })
 
         if (test.testIndex > 0) {
@@ -96,15 +96,18 @@ controllers.addAnswerToTest = async (req, res) => {
         }
 
         const { questionIndex, selectedOptionIndex } = req.body;
-        if (!questionIndex.toString() || !selectedOptionIndex || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });   
+        if (!questionIndex.toString() || !selectedOptionIndex.toString() || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });   
       
         await TestResult.findOneAndUpdate(
-            { userId, testId, isCompleted: false },
+            { userId, testId, isCompleted: false, 'answers.questionIndex': questionIndex },
             {
-                $setOnInsert: { userId, testId, isCompleted: false },
-                $addToSet: { answers: { questionIndex, selectedOptionIndex } }
+                $set: { 
+                  "answers.$.selectedOptionIndex": selectedOptionIndex
+                }
             },
-            { upsert: true }
+            { 
+            upsert: true
+            }
         );
     
         res.status(200).json({ message: 'Answer updated successfully' });
