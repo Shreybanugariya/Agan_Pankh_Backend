@@ -36,15 +36,22 @@ common.submitTestAndCalulateResult = async ({ userId, testId }) => {
   if (!answers.length) return false
 
   let score = 0;
-  for (const userAnswer of answers) {
-      const question = test.questions.find(q => q._id.equals(userAnswer.question)); 
-
-      const selectedOptions = question?.options.filter(option => userAnswer.selectedOptions.includes(option._id.toString()));
-      const correctOptions = question?.options.filter(option => option.isCorrect);
-
-      if (selectedOptions && selectedOptions.length === correctOptions.length && selectedOptions.every(option => option.isCorrect)) score++;
+  const correctOptionsMap = new Map();  
+  for (const question of test.questions) {
+    const correctOptionIndices = question.options.reduce((indices, option, index) => {
+        if (option.isCorrect) indices.push(index);
+        return indices;
+    }, []);
+    correctOptionsMap.set(question.questionIndex, correctOptionIndices);
   }
-  // Complete the test
+  for (const userAnswer of answers) {
+    const correctOptionIndices = correctOptionsMap.get(userAnswer.questionIndex);
+    if (!correctOptionIndices) continue;
+
+    const selectedOptionIndex = userAnswer.selectedOptionIndex;
+    if (correctOptionIndices.includes(selectedOptionIndex)) score++;
+ }
+  // Completing the Test
   await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
   return score;
 }

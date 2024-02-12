@@ -19,9 +19,9 @@ controllers.getTestLists = async (req, res) => {
             } else {
                 if (t.testIndex <= user.currentTestIndex) t.isLocked = false
             }
-            const checkResults = await TestResult.findOne({ userId: user._id, testId: t._id }, { score: 1 }).lean()
+            const checkResults = await TestResult.findOne({ userId: user._id, testId: t._id }, { score: 1, isCompleted: 1 }).lean()
             if (checkResults) {
-                t.testGiven = true
+                t.isOnGoing = !checkResults.isCompleted
                 t.score = checkResults.score
             }
         }
@@ -39,6 +39,11 @@ controllers.accessTestQuestions = async (req, res) => {
         const test = await Tests.findById(req.params.id, { 'questions.options.isCorrect': -1 }).lean()
         if (!test) return res.status(404).json({ message: 'Test not found'})
         if (!test.questions.length) return res.status(404).json({ message: 'Test Questions not found'})
+
+        const testresults = await TestResult.findOne({ userId: req.user._id, testId: test._id }, { isCompleted: 1, score: 1}).lean();
+        if (testresults && !testresults.isCompleted) {
+            return res.status(200).json({ message: 'Test is on going', tests, questionsAttempted: testresults.answers })
+        } else if (testresults && testresults.isCompleted) return res.status(200).json({ message: 'Test completed', score: testresults.score })
 
         if (test.testIndex > 0) {
             const check = await checkPreviousTestCleared({ userId: req.user._id, testIndex: test.testIndex })
@@ -83,31 +88,25 @@ controllers.addAnswerToTest = async (req, res) => {
     try {
         const { id: testId } = req.params
         const { _id: userId } = req.user
+
         const checkTestSession = await TestSession.findOne({ userId, testId: testId }).lean()
         if (!checkTestSession) {
             const score = await submitTestAndCalulateResult({ userId, testId })
-            return res.status(200).json({ message: 'Test already completed', score: score})
+            return res.status(200).json({ message: 'Test Completed', score: score})
         }
-        const { questionText, selectedOptionIndex } = req.body;
-        if (!questionText || selectedOptionIndex === undefined || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });
-        
+
+        const { questionIndex, selectedOptionIndex } = req.body;
+        if (!questionIndex.toString() || !selectedOptionIndex || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });   
+      
         const testResult = await TestResult.findOne({ userId, testId: testId });
         const test = await Tests.findById(testId).lean()
 
-        const question = test.questions.find(question => question.questionText === questionText);
-        const answerIndex = testResult.answers.findIndex(answer => answer.question === question._id);
+        const question = test.questions.find(question => question.questionIndex === questionIndex);
+        const answerIndex = testResult.answers.findIndex(answer => answer.questionIndex === question.questionIndex);
 
-        console.log(answerIndex, question, testResult.answers[0].question, question._id)
-        if (answerIndex !== -1) {
-            console.log('in if')
-            testResult.answers[answerIndex].selectedOptionIndex = selectedOptionIndex;
-        }
-        else {
-            console.log('in else', answerIndex)
-            testResult.answers.push({ question: question._id, selectedOptionIndex });
-        }
+        if (answerIndex !== -1) testResult.answers[answerIndex].selectedOptionIndex = selectedOptionIndex;
+        else testResult.answers.push({ question: question.questionIndex, selectedOptionIndex });
 
-        console.log(testResult.answers)
         await testResult.save();
         res.status(200).json({ message: 'Answer updated successfully' });
     } catch (error) {
