@@ -6,12 +6,13 @@ const optionSchema = new mongoose.Schema({
     isCorrect: { type: Boolean, default: false },
   });
   
-  const questionSchema = new mongoose.Schema({
+const questionSchema = new mongoose.Schema({
     questionText: { type: String, required: true },
     testSections: { type: String, enum: ['R', 'QA', 'E', 'G'], required: true, default: 'R'}, // R - Reasoning, QA - Quantitative Apptitute, E - English, G - Gujarati
     queImage: { type: String },
     options: [optionSchema],
-  });
+    questionIndex: { type: Number, required: true, unique: true, index: true },
+});
 
 const testSchema = new mongoose.Schema({
     testName: { type: String, required: true, unique: true }, 

@@ -52,17 +52,10 @@ app.disable('etag');
 app.disable('x-powered-by');
 app.enable('trust proxy');
 app.set('view engine', 'ejs');
-app.get('/refresh-token/:id?', (req, res) => {
-    res.sendFile(path.join(`${__dirname}/views/refresh-token.html`));
-});
-app.get('/verify-merchant', (req, res) => {
-    res.sendFile(path.join(`${__dirname}/views/verify-merchant.html`));
-});
 app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: '16mb' }));
 app.use(bodyParser.urlencoded({ limit: '16mb', extended: true, parameterLimit: 50000 }));
 app.use(morgan('dev', { skip: (req) => req.path === '/ping' || req.path === '/favicon.ico' }));
-app.use(express.static('./public'));
 app.use(routeConfig);
 app.use('/api/v1', routes);
 app.use('*', routeHandler);
@@ -82,7 +75,6 @@ cron.schedule('* * * * *', async () => {
       const expiredSessions = await TestSession.find({ endTime: { $lte: currentTime } });
   
       for (const session of expiredSessions) {
-        console.log('Here in for Loop')
         const { userId, testId } = session
         await submitTestAndCalulateResult({ userId, testId });
         await TestSession.findByIdAndDelete(session._id);
@@ -90,6 +82,6 @@ cron.schedule('* * * * *', async () => {
     } catch (error) {
       console.error('Error processing cron job:', error);
     }
-  });
+});
 
 module.exports = httpServer;
