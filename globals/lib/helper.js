@@ -1,13 +1,13 @@
 const _ = {}
 
-// _.clone = function (data = {}) {
-//     const originalData = data.toObject ? data.toObject() : data; // for mongodb result operations
-//     const eType = originalData ? originalData.constructor : 'normal';
-//     if (eType === Object) return { ...originalData };
-//     if (eType === Array) return [...originalData];
-//     return data;
-//     // return JSON.parse(JSON.stringify(data));
-// };
+_.clone = function (data = {}) {
+    const originalData = data.toObject ? data.toObject() : data; // for mongodb result operations
+    const eType = originalData ? originalData.constructor : 'normal';
+    if (eType === Object) return { ...originalData };
+    if (eType === Array) return [...originalData];
+    return data;
+    // return JSON.parse(JSON.stringify(data));
+};
 
 _.pick = function (obj, array) {
     const clonedObj = this.clone(obj);
