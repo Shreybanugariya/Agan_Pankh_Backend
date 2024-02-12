@@ -45,6 +45,7 @@ controllers.getUser = async (req, res) => {
 controllers.updateUser = async (req, res) => {
     try {
         req.body = _.pick(req.body, ['username', 'contactNo', 'password', 'city', 'isActive'])
+        if (!req.params.id) req.params.id = req.user._id
         const user = await User.findById(req.params.id, { authToken: 0 })
         if (!user) return res.status(401).json({ message: 'User not Found' })
 
