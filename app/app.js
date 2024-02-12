@@ -69,7 +69,7 @@ httpServer.listen(process.env.PORT, '0.0.0.0', () => console.green(`Spinning on 
 
 //Cron
 
-cron.schedule('* * * * *', async () => {
+cron.schedule('*/10 * * * * *', async () => {
     try {
       const currentTime = new Date();
       const expiredSessions = await TestSession.find({ endTime: { $lte: currentTime } });

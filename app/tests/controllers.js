@@ -89,7 +89,7 @@ controllers.addAnswerToTest = async (req, res) => {
         const { id: testId } = req.params
         const { _id: userId } = req.user
 
-        const checkTestSession = await TestSession.findOne({ userId, testId: testId }).lean()
+        const checkTestSession = await TestSession.findOne({ userId, testId }).lean()
         if (!checkTestSession) {
             const score = await submitTestAndCalulateResult({ userId, testId })
             return res.status(200).json({ message: 'Test Completed', score: score})
@@ -98,16 +98,15 @@ controllers.addAnswerToTest = async (req, res) => {
         const { questionIndex, selectedOptionIndex } = req.body;
         if (!questionIndex.toString() || !selectedOptionIndex || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });   
       
-        const testResult = await TestResult.findOne({ userId, testId: testId });
-        const test = await Tests.findById(testId).lean()
-
-        const question = test.questions.find(question => question.questionIndex === questionIndex);
-        const answerIndex = testResult.answers.findIndex(answer => answer.questionIndex === question.questionIndex);
-
-        if (answerIndex !== -1) testResult.answers[answerIndex].selectedOptionIndex = selectedOptionIndex;
-        else testResult.answers.push({ question: question.questionIndex, selectedOptionIndex });
-
-        await testResult.save();
+        await TestResult.findOneAndUpdate(
+            { userId, testId, isCompleted: false },
+            {
+                $setOnInsert: { userId, testId, isCompleted: false },
+                $addToSet: { answers: { questionIndex, selectedOptionIndex } }
+            },
+            { upsert: true }
+        );
+    
         res.status(200).json({ message: 'Answer updated successfully' });
     } catch (error) {
         console.error(error);
