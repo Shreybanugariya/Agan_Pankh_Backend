@@ -99,12 +99,10 @@ controllers.addAnswerToTest = async (req, res) => {
         if (!questionIndex.toString() || !selectedOptionIndex.toString() || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });   
         await TestResult.updateOne({ userId, testId },  {
             $cond: {
-                if: { $eq: [{ $size: "$answers" }, 0] },
-                then: { $push: { answers: [{ questionIndex, selectedOptionIndex }] } }, 
+                if: { "$answers.questionIndex": questionIndex },
+                then: { $set: { answers: { questionIndex, selectedOptionIndex } } }, 
                 else: {
-                  $addToSet: { 
-                    $each: [{ questionIndex, selectedOptionIndex }] 
-                  }
+                  $addToSet: { answers: { questionIndex, selectedOptionIndex } }
                 }
               }
           })
