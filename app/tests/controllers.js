@@ -26,7 +26,7 @@ controllers.getTestLists = async (req, res) => {
         return res.reply(message.success('Test Fetch'), { data: tests })
     } catch (error) {
         console.error(error);
-        res.status(400).json({ success: false, error: 'Something went wrong' });
+        return res.status(400).json({ success: false, error: 'Something went wrong' });
     }
 }
 
@@ -48,12 +48,12 @@ controllers.accessTestQuestions = async (req, res) => {
 
         if (test.testIndex > 0) {
             const check = await checkPreviousTestCleared({ userId: req.user._id, testIndex: test.testIndex })
-            if (!check) res.reply(message.no_prefix('Previous test not cleared'))
+            if (!check) return res.status(400).json({ messa: 'Previous test not cleared' })
         }
         return res.reply(message.success('Test Fetch'), { data: test })
     } catch (error) {
         console.error(error);
-        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+        return res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
 
