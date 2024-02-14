@@ -17,7 +17,7 @@ common.verifyGoogleToken = async (token) => {
 
 common.checkPreviousTestCleared = async (userId, testIndex) => {
   try {
-    if (testIndex === 0) return true
+    if (testIndex === 0) return false
     const previousTest = await Tests.findOne({ userId, testIndex }, { _id: 1 }).lean()
     const previousTestResult = await TestResults.findOne({ userId, testId: previousTest?._id }, { score: 1}).lean()
     if (!previousTestResult || previousTestResult.score === 0) return false
