@@ -31,9 +31,9 @@ controllers.googleSingIn = async (req, res) => {
 
 controllers.getUser = async (req, res) => {
     try {
-        if (!req.user.isAdmin && req.user._id.toString() !== req.params.id) return res.status(401).json({ message: 'Access Denied' })
+        if (!req.user.isAdmin && req.user._id.toString() !== req.params.id) return res.status(400).json({ message: 'Access Denied' })
         const user = await User.findById(req.params.id, { authToken: 0, __v: 0})
-        if (!user) return res.status(401).json({ message: 'User not Found' })
+        if (!user) return res.status(400).json({ message: 'User not Found' })
         return res.reply(message.success('User'), { data: user })
     }
     catch (error) {
@@ -47,7 +47,7 @@ controllers.updateUser = async (req, res) => {
         req.body = _.pick(req.body, ['username', 'contactNo', 'password', 'city', 'isActive'])
         if (!req.params.id) req.params.id = req.user._id
         const user = await User.findById(req.params.id, { authToken: 0 })
-        if (!user) return res.status(401).json({ message: 'User not Found' })
+        if (!user) return res.status(400).json({ message: 'User not Found' })
 
         await User.updateOne({ _id: req.params.id }, req.body )
         return res.reply(message.success('User Update'))

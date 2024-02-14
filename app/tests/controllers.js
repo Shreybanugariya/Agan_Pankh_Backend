@@ -17,8 +17,8 @@ controllers.getTestLists = async (req, res) => {
             const checkResults = await TestResult.findOne({ userId: user._id, testId: t._id }, { score: 1, isCompleted: 1 }).lean()
             if (checkResults) {
                 t.isOnGoing = !checkResults.isCompleted
-                t.testGiven = true
-                t.isLocked = true
+                t.testGiven = checkResults.isCompleted
+                t.isLocked = checkResults.isCompleted
                 t.score = checkResults.score
             } else if (user.hasPreminum && t.testIndex === 0) t.isLocked = false
             else if (user.currentTestIndex === t.testIndex) t.isLocked = false 
@@ -26,7 +26,7 @@ controllers.getTestLists = async (req, res) => {
         return res.reply(message.success('Test Fetch'), { data: tests })
     } catch (error) {
         console.error(error);
-        res.status(401).json({ success: false, error: 'Something went wrong' });
+        res.status(400).json({ success: false, error: 'Something went wrong' });
     }
 }
 
@@ -42,7 +42,7 @@ controllers.accessTestQuestions = async (req, res) => {
 
         const testresults = await TestResult.findOne({ userId, testId }, { isCompleted: 1, score: 1}).lean();
         if (testresults && !testresults.isCompleted) {
-            const testSession = await TestSession.findOne({ userId, testId }, { startTime, endTime})
+            const testSession = await TestSession.findOne({ userId, testId }, { startTime: 1, endTime: 1 })
             return res.status(200).json({ message: 'Test is on going', test, testSession, questionsAttempted: testresults.answers })
         } else if (testresults && testresults.isCompleted) return res.status(200).json({ message: 'Test completed', score: testresults.score })
 
@@ -53,7 +53,7 @@ controllers.accessTestQuestions = async (req, res) => {
         return res.reply(message.success('Test Fetch'), { data: test })
     } catch (error) {
         console.error(error);
-        res.status(401).json({ success: false, error: 'Something Went Wrong' });
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
 
@@ -81,7 +81,7 @@ controllers.startTest = async (req, res) => {
         return res.reply(message.no_prefix('There was an error Starting the Test. Please try again'));
     } catch (error) {
         console.error(error);
-        res.status(401).json({ success: false, error: 'Something Went Wrong' });
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
 
@@ -122,7 +122,7 @@ controllers.addAnswerToTest = async (req, res) => {
         return res.status(200).json({ message: 'Answer updated successfully' });
     } catch (error) {
         console.error(error);
-        res.status(401).json({ success: false, error: 'Something Went Wrong' });
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
 module.exports = controllers

@@ -15,7 +15,7 @@ controller.submitTest = async (req, res) => {
         return res.reply(message.success('Test Submited'), { score })
     } catch (error) {
         console.log(error)
-        return res.status(401).json({ success: false, error: 'Something Went Wrong' });
+        return res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
 
