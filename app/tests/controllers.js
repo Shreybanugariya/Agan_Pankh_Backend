@@ -32,6 +32,7 @@ controllers.getTestLists = async (req, res) => {
 
 controllers.accessTestQuestions = async (req, res) => {
     try {
+        if (!req.params.id) return res.status(419).json({ message: 'Id is required'})
         const userId = req.user._id
         const testId = req.params.id
         if (!req.user.hasPreminum) return res.reply(message.no_prefix('Payment not completed, Please try again later'));
