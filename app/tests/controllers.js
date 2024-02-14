@@ -43,8 +43,8 @@ controllers.accessTestQuestions = async (req, res) => {
 
         const testresults = await TestResult.findOne({ userId, testId }, { isCompleted: 1, score: 1}).lean();
         if (testresults && !testresults.isCompleted) {
-            const testSession = await TestSession.findOne({ userId, testId }, { startTime: 1, endTime: 1 })
-            return res.status(200).json({ message: 'Test is on going', test, testSession, questionsAttempted: testresults.answers })
+            const testSession = await TestSession.findOne({ userId, testId }, { startTime: 1, endTime: 1, answers: 1 })
+            return res.status(200).json({ message: 'Test is on going', test, testSession,questionsAttempted: testresults.answers })
         } else if (testresults && testresults.isCompleted) return res.status(200).json({ message: 'Test completed', score: testresults.score })
 
         if (test.testIndex > 0) {
