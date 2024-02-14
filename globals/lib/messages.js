@@ -24,7 +24,7 @@ const builder = {
     
     successfully: (prefix) => builder.prepare(200, prefix, 'successfully.'),
     error: (prefix) => builder.prepare(500, prefix, 'error.'),
-    no_prefix: (prefix) => builder.prepare(200, prefix, ''),
+    no_prefix: (prefix) => builder.prepare(400, prefix, ''),
     getString: (key) => (customMessages ? customMessages[key].message : ''),
     not_allowed: (prefix) => builder.prepare(409, prefix, 'not allowed.'),
     // custom: key => builder.prepare(...customMessages[key], ''),

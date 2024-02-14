@@ -20,12 +20,11 @@ controllers.googleSingIn = async (req, res) => {
         }
         const authToken = jwt.sign({ googleId: sub }, JWT_SECRET_KEY, { expiresIn: '300d' })
         const user = await User.create({ email, googleId: sub, authToken })
-        user.isNew = true
-        return res.reply(message.success('Login'), { data: user })
+        return res.reply(message.success('Login'), { data: { isNew: true, authToken} })
     }
     catch (error) {
         console.error(error);
-        res.status(401).json({ success: false, error: 'Invalid Google Sign-In token' });
+        return res.status(400).json({ success: false, error: 'Invalid Google Sign-In token' });
     }
 }
 
@@ -34,11 +33,11 @@ controllers.getUser = async (req, res) => {
         if (!req.user.isAdmin && req.user._id.toString() !== req.params.id) return res.status(400).json({ message: 'Access Denied' })
         const user = await User.findById(req.params.id, { authToken: 0, __v: 0})
         if (!user) return res.status(400).json({ message: 'User not Found' })
-        return res.reply(message.success('User'), { data: user })
+        return res.status(200).json({ message: 'User Fetch', data: user })
     }
     catch (error) {
         console.error(error);
-        res.status(401).json({ success: false, error: 'User not found' });
+        return res.status(400).json({ success: false, error: 'User not found' });
     }
 }
 
@@ -50,11 +49,11 @@ controllers.updateUser = async (req, res) => {
         if (!user) return res.status(400).json({ message: 'User not Found' })
 
         await User.updateOne({ _id: req.params.id }, req.body )
-        return res.reply(message.success('User Update'))
+        return res.status(200).json({ message: 'User Update Success'})
     }
     catch (error) {
         console.error(error);
-        res.status(401).json({ success: false, error: 'User not found' });
+        return res.status(400).json({ success: false, error: 'User not found' });
     }
 }
 

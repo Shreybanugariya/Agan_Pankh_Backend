@@ -64,10 +64,10 @@ controllers.startTest = async (req, res) => {
         const userId = req.user._id
         //Validations
         if (userId.toString() !== req.user._id.toString()) return res.reply(message.invalid_req('UserID miss match'))
-        if (!req.user.hasPreminum) return res.reply(message.no_prefix('Payment not completed, Please try again later'));
+        if (!req.user.hasPreminum) return res.reply(message.invalid_req('Payment not completed, Please try again later'));
         const test = await Tests.findById(testId).lean()
         if (!test) return res.reply(message.not_found('Test'))
-        if (!(await checkPreviousTestCleared( userId, test.testIndex ))) return res.reply(message.no_prefix('Previous Test not cleared, please complete previous test'))
+        if (!(await checkPreviousTestCleared( userId, test.testIndex ))) return res.reply(message.invalid_req('Previous Test not cleared, please complete previous test'))
 
         const checkGiven = await TestResult.findOne({ userId, testId }, { _id: 1, score: 1 }).lean(test.testIndex)
         if (checkGiven) return res.reply(message.no_prefix('Test already conducted'), { score: checkGiven.score })
