@@ -97,16 +97,12 @@ controllers.addAnswerToTest = async (req, res) => {
 
         const { questionIndex, selectedOptionIndex } = req.body;
         if (!questionIndex.toString() || !selectedOptionIndex.toString() || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });   
-        await TestResult.updateOne({ userId, testId },  {
-            $cond: {
-                if: { "$answers.questionIndex": questionIndex },
-                then: { $set: { answers: { questionIndex, selectedOptionIndex } } }, 
-                else: {
-                  $addToSet: { answers: { questionIndex, selectedOptionIndex } }
-                }
-              }
-          })
-        res.status(200).json({ message: 'Answer updated successfully' });
+        await TestResult.updateOne(
+            { userId, testId, 'answer.$.questionIndex': questionIndex }, 
+            { 'answers.$.selectedOptionIndex': selectedOptionIndex }, 
+            { upsert: true }
+        );
+        return res.status(200).json({ message: 'Answer updated successfully' });
     } catch (error) {
         console.error(error);
         res.status(401).json({ success: false, error: 'Something Went Wrong' });
