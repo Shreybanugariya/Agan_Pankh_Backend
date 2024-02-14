@@ -59,7 +59,7 @@ controllers.accessTestQuestions = async (req, res) => {
 controllers.startTest = async (req, res) => {
     try {
         const { userId, testId } = req.body;
-
+        if (!userId) userId = req.user._id
         //Validations
         if (userId.toString() !== req.user._id.toString()) return res.reply(message.invalid_req('UserID miss match'))
         if (!req.user.hasPreminum) return res.reply(message.no_prefix('Payment not completed, Please try again later'));
