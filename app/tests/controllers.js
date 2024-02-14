@@ -41,9 +41,9 @@ controllers.accessTestQuestions = async (req, res) => {
         if (!test) return res.status(404).json({ message: 'Test not found'})
         if (!test.questions.length) return res.status(404).json({ message: 'Test Questions not found'})
 
-        const testresults = await TestResult.findOne({ userId, testId }, { isCompleted: 1, score: 1}).lean();
+        const testresults = await TestResult.findOne({ userId, testId }, { isCompleted: 1, score: 1, answers: 1 }).lean();
         if (testresults && !testresults.isCompleted) {
-            const testSession = await TestSession.findOne({ userId, testId }, { startTime: 1, endTime: 1, answers: 1 })
+            const testSession = await TestSession.findOne({ userId, testId }, { startTime: 1, endTime: 1 })
             return res.status(200).json({ message: 'Test is on going', test, testSession,questionsAttempted: testresults.answers })
         } else if (testresults && testresults.isCompleted) return res.status(200).json({ message: 'Test completed', score: testresults.score })
 
