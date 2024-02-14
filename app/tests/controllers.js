@@ -8,7 +8,7 @@ const controllers = {}
 
 controllers.getTestLists = async (req, res) => {
     try {
-        const tests = await Tests.find({}, { testName: 1, totalQuestions: 1, duration: 1 }).lean()
+        const tests = await Tests.find({}, { testName: 1, totalQuestions: 1, duration: 1 }).sort({ testIndex: 1 }).lean()
         if (!tests.length) return res.status(400).json({ message: 'There was an error Loading the test, Please try again later.' })
         const user = req.user
         for (const t of tests) {
