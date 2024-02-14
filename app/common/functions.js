@@ -26,18 +26,10 @@ common.checkPreviousTestCleared = async (userId, testIndex) => {
   }
 }
 
-common.submitTestAndCalulateResult = async ({ userId, testId }) => {
-  const test = await Tests.findById(testId);
-  const testResults = await TestResults.findOne({ userId, testId }).lean()
-
-  if (!test || !testResults) return false
-  if (testResults.isCompleted) return testResults.score
-  const { answers } = testResults
-  if (!answers.length) return false
-
-  let score = 0;
+const calculateScore = (questions, answers) => {
   const correctOptionsMap = new Map();  
-  for (const question of test.questions) {
+  let score = 0;
+  for (const question of questions) {
     const correctOptionIndices = question.options.reduce((indices, option, index) => {
         if (option.isCorrect) indices.push(index);
         return indices;
@@ -50,10 +42,29 @@ common.submitTestAndCalulateResult = async ({ userId, testId }) => {
 
     const selectedOptionIndex = userAnswer.selectedOptionIndex;
     if (correctOptionIndices.includes(selectedOptionIndex)) score++;
- }
-  // Completing the Test
-  await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
-  return score;
+  }
+  return score
+}
+
+common.submitTestAndCalulateResult = async ({ userId, testId }, submitedAnswers) => {
+  const test = await Tests.findById(testId);
+  if (!test) return false;
+  const testResults = await TestResults.findOne({ userId, testId }).lean()
+  if (submitedAnswers && submitedAnswers.length) {
+    const score = calculateScore(test.questions, submitedAnswers)
+    await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
+    return score
+  } else {
+    const testResults = await TestResults.findOne({ userId, testId }).lean()
+    if (!testResults) return false
+    if (testResults.isCompleted) return testResults.score
+
+    const { answers } = testResults
+    if (!answers.length) return false
+    const score = calculateScore(test.questions, answers)
+    return score;
+  }
+
 }
 
 module.exports = common
