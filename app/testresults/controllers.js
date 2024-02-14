@@ -12,7 +12,7 @@ controller.submitTest = async (req, res) => {
         const score = await submitTestAndCalulateResult({ userId, testId }, answers)
         if (score.toString === 'false') return res.reply(message.no_prefix('There is an issue in submitting the test, Please contact Admin'))
         
-        return res.reply(message.success('Test Fetch'), { data: score })
+        return res.reply(message.success('Test Submited'), { score })
     } catch (error) {
         console.log(error)
         return res.status(401).json({ success: false, error: 'Something Went Wrong' });

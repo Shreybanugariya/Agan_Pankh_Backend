@@ -8,22 +8,20 @@ const controllers = {}
 
 controllers.getTestLists = async (req, res) => {
     try {
-        const tests = await Tests.find({}, { testName: 1, totalQuestions: 1, duration: 1 }).sort({ testIndex: 1 }).lean()
+        const tests = await Tests.find({}, { testName: 1, totalQuestions: 1, duration: 1, testIndex : 1 }).sort({ testIndex: 1 }).lean()
         if (!tests.length) return res.status(400).json({ message: 'There was an error Loading the test, Please try again later.' })
         const user = req.user
         for (const t of tests) {
             t.isLocked = true
             t.testGiven = false
-            if (!user.hasPreminum) {
-                if (t.testIndex === 0) t.isLocked = false
-            } else {
-                if (t.testIndex <= user.currentTestIndex) t.isLocked = false
-            }
             const checkResults = await TestResult.findOne({ userId: user._id, testId: t._id }, { score: 1, isCompleted: 1 }).lean()
             if (checkResults) {
                 t.isOnGoing = !checkResults.isCompleted
+                t.testGiven = true
+                t.isLocked = true
                 t.score = checkResults.score
-            }
+            } else if (user.hasPreminum && t.testIndex === 0) t.isLocked = false
+            else if (user.currentTestIndex === t.testIndex) t.isLocked = false 
         }
         return res.reply(message.success('Test Fetch'), { data: tests })
     } catch (error) {
@@ -34,15 +32,18 @@ controllers.getTestLists = async (req, res) => {
 
 controllers.accessTestQuestions = async (req, res) => {
     try {
+        const userId = req.user._id
+        const testId = req.params.id
         if (!req.user.hasPreminum) return res.reply(message.no_prefix('Payment not completed, Please try again later'));
 
-        const test = await Tests.findById(req.params.id, { 'questions.options.isCorrect': 0 }).lean()
+        const test = await Tests.findById(testId, { 'questions.options.isCorrect': 0 }).lean()
         if (!test) return res.status(404).json({ message: 'Test not found'})
         if (!test.questions.length) return res.status(404).json({ message: 'Test Questions not found'})
 
-        const testresults = await TestResult.findOne({ userId: req.user._id, testId: test._id }, { isCompleted: 1, score: 1}).lean();
+        const testresults = await TestResult.findOne({ userId, testId }, { isCompleted: 1, score: 1}).lean();
         if (testresults && !testresults.isCompleted) {
-            return res.status(200).json({ message: 'Test is on going', test, questionsAttempted: testresults.answers })
+            const testSession = await TestSession.findOne({ userId, testId }, { startTime, endTime})
+            return res.status(200).json({ message: 'Test is on going', test, testSession, questionsAttempted: testresults.answers })
         } else if (testresults && testresults.isCompleted) return res.status(200).json({ message: 'Test completed', score: testresults.score })
 
         if (test.testIndex > 0) {
@@ -97,11 +98,27 @@ controllers.addAnswerToTest = async (req, res) => {
 
         const { questionIndex, selectedOptionIndex } = req.body;
         if (!questionIndex.toString() || !selectedOptionIndex.toString() || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });   
-        await TestResult.updateOne(
-            { userId, testId, 'answer.$.questionIndex': questionIndex }, 
-            { 'answers.$.selectedOptionIndex': selectedOptionIndex }, 
-            { upsert: true }
-        );
+        const testResult = await TestResult.findOne({ userId, testId })
+        const { answers } = testResult
+        if (!answers.length) answers.push({
+            questionIndex,
+            selectedOptionIndex
+        })
+        else {
+            const existingAnswerIndex = answers.findIndex(
+                answer => answer.questionIndex === questionIndex
+            );
+            if (existingAnswerIndex !== -1) {
+                answers[existingAnswerIndex].selectedOptionIndex = selectedOptionIndex;
+            }
+            else {
+                answers.push({
+                    questionIndex,
+                    selectedOptionIndex
+                });
+            }
+        }
+        await testResult.save()
         return res.status(200).json({ message: 'Answer updated successfully' });
     } catch (error) {
         console.error(error);

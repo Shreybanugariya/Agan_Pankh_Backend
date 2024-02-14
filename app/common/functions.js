@@ -2,6 +2,7 @@ const common = {}
 const { OAuth2Client } = require('google-auth-library');
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
 const Tests = require('../tests/model')
+const User = require('../users/model')
 const TestResults = require('../testresults/model')
 
 common.verifyGoogleToken = async (token) => {
@@ -53,6 +54,7 @@ common.submitTestAndCalulateResult = async ({ userId, testId }, submitedAnswers)
   if (submitedAnswers && submitedAnswers.length) {
     const score = calculateScore(test.questions, submitedAnswers)
     await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
+    await User.updateOne({ _id: userId }, { currentTestIndex: test.testIndex + 1 })
     return score
   } else {
     const testResults = await TestResults.findOne({ userId, testId }).lean()
@@ -62,6 +64,9 @@ common.submitTestAndCalulateResult = async ({ userId, testId }, submitedAnswers)
     const { answers } = testResults
     if (!answers.length) return false
     const score = calculateScore(test.questions, answers)
+    await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
+    await User.updateOne({ _id: userId }, { currentTestIndex: test.testIndex + 1 })
+
     return score;
   }
 
