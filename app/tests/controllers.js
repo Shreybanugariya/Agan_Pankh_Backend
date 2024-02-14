@@ -21,7 +21,7 @@ controllers.getTestLists = async (req, res) => {
                 t.isLocked = checkResults.isCompleted
                 t.score = checkResults.score
             } else if (user.hasPreminum && t.testIndex === 0) t.isLocked = false
-            else if (user.currentTestIndex === t.testIndex) t.isLocked = false 
+            else if (user.currentTestIndex === t.testIndex && t.testIndex !== 0) t.isLocked = false 
         }
         return res.reply(message.success('Test Fetch'), { data: tests })
     } catch (error) {
