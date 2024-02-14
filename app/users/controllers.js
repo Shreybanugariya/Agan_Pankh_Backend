@@ -20,7 +20,7 @@ controllers.googleSingIn = async (req, res) => {
         }
         const authToken = jwt.sign({ googleId: sub }, JWT_SECRET_KEY, { expiresIn: '300d' })
         const user = await User.create({ email, googleId: sub, authToken })
-        return res.reply(message.success('Login'), { data: { isNew: true, authToken} })
+        return res.reply(message.success('Login'), { data: { id: user?._id, isNew: true, authToken} })
     }
     catch (error) {
         console.error(error);
