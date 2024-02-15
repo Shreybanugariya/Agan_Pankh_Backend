@@ -41,7 +41,7 @@ controllers.accessTestQuestions = async (req, res) => {
         if (!test) return res.status(404).json({ message: 'Test not found'})
         if (!test.questions.length) return res.status(404).json({ message: 'Test Questions not found'})
 
-        const testresults = await TestResult.findOne({ userId, testId }, { isCompleted: 1, score: 1, answers: 1 }).lean();
+        const testresults = await TestResult.findOne({ userId, testId }, { isCompleted: 1, score: 1, answers: 1, isVisited: 1, isReviewed: 1 }).lean();
         if (testresults && !testresults.isCompleted) {
             const testSession = await TestSession.findOne({ userId, testId }, { startTime: 1, endTime: 1 })
             return res.status(200).json({ message: 'Test is on going', test, testSession,questionsAttempted: testresults.answers })
@@ -97,29 +97,47 @@ controllers.addAnswerToTest = async (req, res) => {
             return res.status(200).json({ message: 'Test Completed', score: score})
         }
 
-        const { questionIndex, selectedOptionIndex } = req.body;
-        if (!questionIndex.toString() || !selectedOptionIndex.toString() || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });   
-        const testResult = await TestResult.findOne({ userId, testId })
-        const { answers } = testResult
-        if (!answers.length) answers.push({
-            questionIndex,
-            selectedOptionIndex
-        })
-        else {
-            const existingAnswerIndex = answers.findIndex(
-                answer => answer.questionIndex === questionIndex
-            );
-            if (existingAnswerIndex !== -1) {
-                answers[existingAnswerIndex].selectedOptionIndex = selectedOptionIndex;
-            }
-            else {
-                answers.push({
-                    questionIndex,
-                    selectedOptionIndex
-                });
-            }
+        const { questionIndex, selectedOptionIndex, visitedIndex, reviewedIndex } = req.body;
+        if (visitedIndex !== null && visitedIndex !== undefined) {
+            await TestResult.updateOne({ userId, testId }, { $addToSet: { isVisited: visitedIndex } })
+            return res.status(200).json({ message: 'Answer updated successfully' });
         }
-        await testResult.save()
+        else if (reviewedIndex !== null && reviewedIndex !== undefined) {
+            const testResult = await TestResult.findOne({ userId, testId })
+            const { isReviewed } = testResult
+            if (!isReviewed.length) isReviewed.push(reviewedIndex)
+            else {
+                const index = isReviewed.indexOf(reviewedIndex)
+                if (index !== -1) testResult.isReviewed = isReviewed.filter(item => item !== reviewedIndex)
+                else isReviewed.push(reviewedIndex)
+            }
+            await testResult.save()
+            return res.status(200).json({ message: 'Answer updated successfully' });
+        }
+        else {
+            if (!questionIndex?.toString() || !selectedOptionIndex?.toString() || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });
+            const testResult = await TestResult.findOne({ userId, testId })
+            const { answers } = testResult
+            if (!answers.length) answers.push({
+                questionIndex,
+                selectedOptionIndex
+            })
+            else {
+                const existingAnswerIndex = answers.findIndex(
+                    answer => answer.questionIndex === questionIndex
+                );
+                if (existingAnswerIndex !== -1) {
+                    answers[existingAnswerIndex].selectedOptionIndex = selectedOptionIndex;
+                }
+                else {
+                    answers.push({
+                        questionIndex,
+                        selectedOptionIndex
+                    });
+                }
+            }
+            await testResult.save()
+        }
         return res.status(200).json({ message: 'Answer updated successfully' });
     } catch (error) {
         console.error(error);

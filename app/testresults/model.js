@@ -11,10 +11,13 @@ const testResultSchema = new mongoose.Schema({
       selectedOptionIndex: { type: Number, required: true },
     },
   ],
-  score: { type: Number, default: 0 },
+  isVisited: { type: [Number] },
+  isReviewed: { type: [Number] },
+  score: { type: Number, default: 0 }, // +1 for correct -0.25 for negative
   submittedAt: { type: Date },
 });
 
+testResultSchema.index({ userId: 1, testId: 1})
 const TestResult = mongoose.model('TestResult', testResultSchema);
 
 module.exports = TestResult;
