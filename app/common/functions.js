@@ -43,6 +43,7 @@ const calculateScore = (questions, answers) => {
 
     const selectedOptionIndex = userAnswer.selectedOptionIndex;
     if (correctOptionIndices.includes(selectedOptionIndex)) score++;
+    else score -= 0.25
   }
   return score
 }
