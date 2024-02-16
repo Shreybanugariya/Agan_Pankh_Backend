@@ -50,7 +50,7 @@ controllers.updateUser = async (req, res) => {
     try {
         req.body = _.pick(req.body, ['username', 'contactNo', 'password', 'city', 'isActive'])
         if (!req.params.id) req.params.id = req.user._id
-        const user = await User.findById(req.params.id, { authToken: 0 })
+        const user = await User.findById(req.params.id, { _id: 1 }).lean()
         if (!user) return res.status(400).json({ message: 'User not Found' })
 
         await User.updateOne({ _id: req.params.id }, req.body )
