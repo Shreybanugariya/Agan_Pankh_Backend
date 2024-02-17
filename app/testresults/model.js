@@ -8,7 +8,7 @@ const testResultSchema = new mongoose.Schema({
     {
       questionIndex: { type: Number, required: true, index: true },
       question: { type: mongoose.Schema.Types.ObjectId, ref: 'Tests.questions' },
-      selectedOptionIndex: { type: Number, required: true },
+      selectedOptionIndex: { type: Number },
     },
   ],
   isVisited: { type: [Number] },

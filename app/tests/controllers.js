@@ -36,6 +36,8 @@ controllers.accessTestQuestions = async (req, res) => {
         const userId = req.user._id
         const testId = req.params.id
         if (!req.user.hasPreminum) return res.status(400).json({ success: false, error: 'Payment not completed. Please buy the plan to continue' });
+        const testSession = await TestSession.findOne({ userId, testId }, { startTime: 1, endTime: 1 })
+        if (!testSession) return res.status(400).json({ success: false, error: 'Test Questions cannot be accessed without Starting the Test' });
 
         const test = await Tests.findById(testId, { 'questions.options.isCorrect': 0 }).lean()
         if (!test) return res.status(404).json({ message: 'Test not found'})
@@ -43,7 +45,11 @@ controllers.accessTestQuestions = async (req, res) => {
 
         const testresults = await TestResult.findOne({ userId, testId }, { isCompleted: 1, score: 1, answers: 1, isVisited: 1, isReviewed: 1 }).lean();
         if (testresults && !testresults.isCompleted) {
-            const testSession = await TestSession.findOne({ userId, testId }, { startTime: 1, endTime: 1 })
+            const answers = testresults.answers
+            for (const a of answers) {
+                if (testresults.isVisited.includes(a.questionIndex)) a.isVisited = true
+                if (testresults.isReviewed.includes(a.questionIndex)) a.isReviewed = true
+            }
             return res.status(200).json({ message: 'Test is on going', test, testSession,questionsAttempted: testresults.answers })
         } else if (testresults && testresults.isCompleted) return res.status(200).json({ message: 'Test completed', score: testresults.score })
 
@@ -96,27 +102,22 @@ controllers.addAnswerToTest = async (req, res) => {
             const score = await submitTestAndCalulateResult({ userId, testId })
             return res.status(400).json({ message: 'Test Already Completed', score: score})
         }
+        const testResult = await TestResult.findOne({ userId, testId })
 
-        const { questionIndex, selectedOptionIndex, visitedIndex, reviewedIndex } = req.body;
-        if (visitedIndex !== null && visitedIndex !== undefined) {
-            await TestResult.updateOne({ userId, testId }, { $addToSet: { isVisited: visitedIndex } })
-            return res.status(200).json({ message: 'Answer updated successfully' });
-        }
-        else if (reviewedIndex !== null && reviewedIndex !== undefined) {
-            const testResult = await TestResult.findOne({ userId, testId })
+        const { questionIndex, selectedOptionIndex, isVisited, isReviewed } = req.body;
+        if (!questionIndex) return res.status(400).json({ error: 'Question Index Required' });
+        if (selectedOptionIndex === null && (!isVisited || !isReviewed)) return res.status(400).json({ error: 'Invalid request object' });
+
+        if (isReviewed) {
             const { isReviewed } = testResult
-            if (!isReviewed.length) isReviewed.push(reviewedIndex)
+            if (!isReviewed.length) isReviewed.push(questionIndex)
             else {
-                const index = isReviewed.indexOf(reviewedIndex)
-                if (index !== -1) testResult.isReviewed = isReviewed.filter(item => item !== reviewedIndex)
-                else isReviewed.push(reviewedIndex)
+                const index = isReviewed.indexOf(questionIndex)
+                if (index !== -1) testResult.isReviewed = isReviewed.filter(item => item !== questionIndex)
+                else isReviewed.push(questionIndex)
             }
-            await testResult.save()
-            return res.status(200).json({ message: 'Answer updated successfully' });
         }
-        else {
-            if (!questionIndex?.toString() || !selectedOptionIndex?.toString() || selectedOptionIndex < 0) return res.status(400).json({ error: 'Invalid input' });
-            const testResult = await TestResult.findOne({ userId, testId })
+        if (selectedOptionIndex !== null) {
             const { answers } = testResult
             if (!answers.length) answers.push({
                 questionIndex,
@@ -136,9 +137,18 @@ controllers.addAnswerToTest = async (req, res) => {
                     });
                 }
             }
-            await testResult.save()
-            return res.status(200).json({ message: 'Answer updated successfully' });
         }
+        if (isVisited) {
+            const { isVisited } = testResult
+            if (!isVisited.length) isVisited.push(questionIndex)
+            else {
+                const index = isVisited.indexOf(questionIndex)
+                if (index === -1) testResult.isVisited.push(questionIndex)
+            }
+        }
+        await testResult.save()
+        return res.status(200).json({ message: 'Answer updated successfully' });
+
     } catch (error) {
         console.error(error);
         res.status(400).json({ success: false, error: 'Something Went Wrong' });
