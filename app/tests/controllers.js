@@ -35,7 +35,7 @@ controllers.accessTestQuestions = async (req, res) => {
         if (!req.params.id) return res.status(419).json({ message: 'Id is required'})
         const userId = req.user._id
         const testId = req.params.id
-        if (!req.user.hasPreminum) return res.reply(message.no_prefix('Payment not completed, Please try again later'));
+        if (!req.user.hasPreminum) return res.status(400).json({ success: false, error: 'Payment not completed. Please buy the plan to continue' });
 
         const test = await Tests.findById(testId, { 'questions.options.isCorrect': 0 }).lean()
         if (!test) return res.status(404).json({ message: 'Test not found'})
@@ -64,7 +64,7 @@ controllers.startTest = async (req, res) => {
         const userId = req.user._id
         //Validations
         if (userId.toString() !== req.user._id.toString()) return res.reply(message.invalid_req('UserID miss match'))
-        if (!req.user.hasPreminum) return res.reply(message.invalid_req('Payment not completed, Please try again later'));
+        if (!req.user.hasPreminum) return res.status(400).json({ error: 'Payment not completed. Please buy the plan to continue' });
         const test = await Tests.findById(testId).lean()
         if (!test) return res.reply(message.not_found('Test'))
         if ((await checkPreviousTestCleared( userId, test.testIndex ))) return res.reply(message.invalid_req('Previous Test not cleared, please complete previous test'))
@@ -94,7 +94,7 @@ controllers.addAnswerToTest = async (req, res) => {
         const checkTestSession = await TestSession.findOne({ userId, testId }).lean()
         if (!checkTestSession) {
             const score = await submitTestAndCalulateResult({ userId, testId })
-            return res.status(200).json({ message: 'Test Completed', score: score})
+            return res.status(400).json({ message: 'Test Already Completed', score: score})
         }
 
         const { questionIndex, selectedOptionIndex, visitedIndex, reviewedIndex } = req.body;
@@ -137,8 +137,8 @@ controllers.addAnswerToTest = async (req, res) => {
                 }
             }
             await testResult.save()
+            return res.status(200).json({ message: 'Answer updated successfully' });
         }
-        return res.status(200).json({ message: 'Answer updated successfully' });
     } catch (error) {
         console.error(error);
         res.status(400).json({ success: false, error: 'Something Went Wrong' });
