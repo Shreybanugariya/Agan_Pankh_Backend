@@ -105,7 +105,7 @@ controllers.addAnswerToTest = async (req, res) => {
         const testResult = await TestResult.findOne({ userId, testId })
 
         const { questionIndex, selectedOptionIndex, isVisited, isReviewed } = req.body;
-        if (!questionIndex) return res.status(400).json({ error: 'Question Index Required' });
+        if (questionIndex === null) return res.status(400).json({ error: 'Question Index Required' });
         if (selectedOptionIndex === null && (!isVisited || !isReviewed)) return res.status(400).json({ error: 'Invalid request object' });
 
         if (isReviewed) {
