@@ -98,11 +98,12 @@ controllers.addAnswerToTest = async (req, res) => {
         const { _id: userId } = req.user
 
         const checkTestSession = await TestSession.findOne({ userId, testId }).lean()
+        const testResult = await TestResult.findOne({ userId, testId })
         if (!checkTestSession) {
+            if (!testResult) return res.status(400).json({ message: 'Test Not Started'})
             const score = await submitTestAndCalulateResult({ userId, testId })
             return res.status(400).json({ message: 'Test Already Completed', score: score})
         }
-        const testResult = await TestResult.findOne({ userId, testId })
 
         const { questionIndex, selectedOptionIndex, isVisited, isReviewed } = req.body;
         if (questionIndex === null) return res.status(400).json({ error: 'Question Index Required' });
@@ -117,7 +118,7 @@ controllers.addAnswerToTest = async (req, res) => {
                 else isReviewed.push(questionIndex)
             }
         }
-        if (selectedOptionIndex !== null) {
+        if (selectedOptionIndex?.toString()) {
             const { answers } = testResult
             if (!answers.length) answers.push({
                 questionIndex,
