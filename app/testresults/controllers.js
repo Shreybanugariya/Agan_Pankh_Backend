@@ -31,7 +31,7 @@ controller.showResults = async (req, res) => {
         const { answers } = testResult
         for (const t of test.questions) {
             const answeredQuestion = answers.find((e) =>  e.questionIndex === t.questionIndex)
-            t.selectedOptionIndex = answeredQuestion.selectedOptionIndex
+            t.selectedOptionIndex = answeredQuestion.selectedOptionIndex || null
         }
         return res.json(test)
     } catch (error) {
