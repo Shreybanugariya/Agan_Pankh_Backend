@@ -37,6 +37,7 @@ const calculateScore = (questions, answers) => {
     }, []);
     correctOptionsMap.set(question.questionIndex, correctOptionIndices);
   }
+  if (!answers.length) return score = 0
   for (const userAnswer of answers) {
     const correctOptionIndices = correctOptionsMap.get(userAnswer.questionIndex);
     if (!correctOptionIndices) continue;
