@@ -1,0 +1,594 @@
+{
+    "testName": "Test 1",
+    "questions": [
+        {
+            "questionText": "અફવા એક વ્યક્તિથી અન્ય બે વ્યક્તિ સુધી પહોંચાડવામાં પાંચ મિનિટ લાગે છે. જો આવું સતત ચાલ્યા કરે તો 1 અફવાહ 1 વ્યક્તિ થી શરુ થઇને 729 વ્યક્તિઓ સુધી ફેલાવવામાં કેટલી મિનિટ લાગે છે તે શોધો?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "25",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "30",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "35",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "40",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 1
+        },
+        {
+            "questionText": "[(18 – 6) ÷ 4] + [72 – 12 ÷ 3 x 2] = ?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "132",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "67",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "73",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "66",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 2
+        },
+        {
+            "questionText": "નળ A અને B એક ટાંકી અનુક્રમે 8 કલાક અને 6 કલાક માં ભરી શકે છે. જો બંને ને વારાફરતી A થી શરુ કરીને એક-એક કલાક ખોલવામાં આવે તો ટાંકી ભારત કેટલો સમય લાગશે?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "3",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "4",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "7",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "3.25",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 3
+        },
+        {
+            "questionText": "214x214x214 – 114x114x114 = ?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "3",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "328",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "4",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "100",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 4
+        },
+        {
+            "questionText": "વિદ્યાર્થીએ ભૂલથી સંખ્યાને 5/2 ને બદલે 2/5 વડે ગુણાકાર કર્યો. ગણતરીમાં ટકાવારીની ભૂલ કેટલી છે?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "84%",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "40%",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "64%",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "ઉપર માં થી એક પણ નહિ",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 5
+        },
+        {
+            "questionText": "1 થી 30 સુધીની સંખ્યાના કેટલા ટકા સંખ્યામાં એકમના અંકમાં 1 અથવા 9 છે?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "12",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "15",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "20",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "22",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 6
+        },
+        {
+            "questionText": "એક દુકાનદાર વસ્તુની કિંમત તેની કિંમત કરતાં 20% વધારે છે અને ત્યારબાદ 10% ડિસ્કાઉન્ટ પણ આપે છે. તો તેને થતા નફાની ટકાવારી શોધો?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "10%",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "8%",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "12%",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "14%",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 7
+        },
+        {
+            "questionText": "એક કામ પુરૂષ 20 દિવસમાં અને સ્ત્રી 15 દિવસમાં કરી શકે છે. જો તેઓ તેના પર 5 દિવસ સાથે મળીને કામ કરે છે, તો કેટલામાં ભાગનું કામ બાકી રહે?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "1/2",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "1/3",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "5/12",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "7/12",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 8
+        },
+        {
+            "questionText": "P, Q અને R મળીને 16 દિવસમાં કામ પૂરું કરી શકે છે અને R એકલા 20 દિવસમાં કામ પૂરું કરી શકે છે. જો P, Q અને R એ એકસાથે કામ શરૂ કર્યું અને 10 દિવસ પછી P અને Q એ કામ છોડી દીધું, તો R એકલા કેટલા દિવસમાં બાકીનું કામ પૂરું કરશે?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "12½ દિવસ",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "20½ દિવસ",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "4 દિવસ",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "7½ દિવસ",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 9
+        },
+        {
+            "questionText": "અંકિત એકલો 6 દિવસમાં અને બિશાલ એકલો 8 દિવસમાં કામ કરી શકે છે. અંકિત અને બિશાલે , દિનેશની મદદથી 3 દિવસમાં કામ પૂરું કર્યું. આ કામ પેટે કુલ 4800 રૂ મહેનતાણું નક્કી કર્યું હોઈ તો અંકિત ના ભાગે કેટલા રૂ આવશે ??",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "રૂ. 1375",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "રૂ. 2400",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "રૂ. 1600",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "રૂ. 1800",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 10
+        }
+
+        ///
+      {
+        "questionText": " નીચે વર્ણવેલા છે તેમાંથી કયા/ કઈ રૂઢિપ્રયોગનો અને અર્થનું જોડકું સાચું નથી? ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText":  "મન ભાંગી જવું : નાસીપાસ થવું",
+            "isCorrect": false
+          },
+          {
+            "optionText": "મન મારવું : દિલગીરી થવી",
+            "isCorrect": true
+          },
+          {
+            "optionText": " મન મોટું રાખવું : ઉદાર બનવું ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " મન ભારે થવું : શોક થવો ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 1
+      },
+      {
+        "questionText": " કાર્ય થયા પહેલાં જ ઈચ્છિત ફળની આશા બાંધવી' — એવો અર્થ દર્શાવતી કહેવત કઈ છે? ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": " પાસે ન મળે કોડી ને ઊભી બજારે દોડી ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "ઉતાવળે આંબા ન પાકે કરારની",
+            "isCorrect": false
+          },
+          {
+            "optionText": "ભરમ ભારી ને ખિસ્સાં ખાલી",
+            "isCorrect": false
+          },
+          {
+            "optionText": "ભેંસ ભાગોળે ને છાશ છાગોળે",
+            "isCorrect": true
+          }
+        ],
+        "questionIndex": 2
+      },
+      {
+        "questionText": "'ચરણસ્પર્શ' સમાસ ઓળખાવો.",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": "તત્પુરુષ સમાસ",
+            "isCorrect": true
+          },
+          {
+            "optionText": "દ્વન્દ્વ સમાસ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "બહુવ્રીહિ સમાસ ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "દ્વિગુ સમાસ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 3
+      },
+      {
+        "questionText": " નીચેનામાંથી કયું સમાનાર્થી જોડકું ખોટું છે ?",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": " હાથી - ગજ – હસ્તિ ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " શાર્દૂલ-મહિષી-મર્કટ ",
+            "isCorrect": true
+          },
+          {
+            "optionText": " બળદ - સુરભિસુત – આખલો ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " ભોરંગ-વાસુકી-સર્પ ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 4
+      },
+      {
+        "questionText": " નીચેનામાંથી કયું વિરુદ્ધાર્થી જોડકું ખોટું છે ? ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": "વિનીત X ઉદ્ધત",
+            "isCorrect": false
+          },
+          {
+            "optionText": "વ્યક્તિ X સમષ્ટિ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " ખુશકી X તરી ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "આર્દ્ર X ભીનું",
+            "isCorrect": true
+          }
+        ],
+        "questionIndex": 5
+      },
+      {
+        "questionText": " શબ્દસમૂહ માટે એક શબ્દ લખો : 'પાણી ભરી લાવવાની ચામડાની ગૂણ કે થેલી' ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": " ઘડો ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " ટેન્કર ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " પખાલ ",
+            "isCorrect": true
+          },
+          {
+            "optionText": " પાઉચ ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 6
+      },
+      {
+        "questionText": " પ્રેરક વાક્યરચનામાં ફેરવો : 'માએ છૂંદાનું તપેલું તડકામાં મૂકયું.' ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": " માએ મારી પાસે છૂંદાનું તપેલું તડકામાં મુકાવશે. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " માએ મારી પાસે છૂંદાનું તપેલું તડકામાં મુકાવ્યું. ",
+            "isCorrect": true
+          },
+          {
+            "optionText": " મા મારી પાસે છૂંદાનું તપેલું તડકામાં મુકાવે છે. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " મા પિતાજી પાસે છૂંદાનું તપેલું તડકામાં મુકાવે છે. ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 7
+      },
+      {
+        "questionText": " 'દેવૈશ્ચર્ય' શબ્દનો સંધિવિગ્રહ શું થાય ? ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": " દેવ્ય + ઐશ્વર્ય ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " દેવ + ઐશ્ચર્ય ",
+            "isCorrect": true
+          },
+          {
+            "optionText": " દેવે+ ઐશ્ચર્ય ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " દેવી + ઐશ્ચર્ય ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 8
+      },
+      {
+        "questionText": " સાચી જોડણી દર્શાવતો શબ્દ શોધ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": "જ્યોતિષી",
+            "isCorrect": true
+          },
+          {
+            "optionText": "અવિનાસ ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "હરીવર ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "તિર્થોત્તમ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 9
+      },
+      {
+        "questionText": "સવિનય' સાથે શુદ્ધ વાક્યની રચના",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": "તમે વિનયસહ સાંભળશો.",
+            "isCorrect": false
+          },
+          {
+            "optionText": " તમને સવિનય સાથે, પ્રસંગે હાજરી આપવાનું આમંત્રણ આપું છું. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "સવિનયસહ જણાવવાનું કે....... ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " મીઠાનો સત્યાગ્રહ સવિનય કાનૂનભંગનો એક ભાગ હતો.",
+            "isCorrect": true
+          }
+        ],
+        "questionIndex": 10
+      },
+      {
+        "questionText": " ગદ્યખંડ વાંચી નીચે આપેલ 2(બે) પ્રશ્નોના જવાબ આપો.-
+  ભવિષ્યમાં દુનિયા કેવી હશે એ આપણે જાણતા નથી, પણ અત્યારના સિનેમા, રેડિયો, ટી.વી. કે અન્ય ઇલેક્ટ્રોનિક સાધનો સામે પુસ્તક હારી જાય અને લુપ્ત થઈ જાય એમ લાગતું નથી. રેડિયો, સિનેમા કે એવી બીજી વસ્તુઓ આપણને આનંદ આપી શકે છે, માહિતી આપી શકે, પણ પુસ્તકનો આનંદ અને પુસ્તકમાંથી મળતું જ્ઞાન એક અનોખી અને પોતાની વિશિષ્ટતા ધરાવે છે. વાચનમાંથી પોતાને મનગમતાં ચિત્રો માણસ ઊભાં કરી શકે છે. એક પ્રસંગ કે માહિતી વાંચીને પોતાના જીવનમાં બનેલ કોઈક એવા કે તદ્દન ભિન્ન પ્રસંગની સ્મૃતિ માણી શકે છે. આવું આજના બીજા કોઈ સાધનમાં શક્ય નથી. વિદ્વાન યોશીદા કેનાકે સાચું જ કહ્યું છે, “દીવાની પાસે એકલા બેઠા હોઈએ અને સાથે પુસ્તક હોય એના જેવો આનંદ દુનિયામાં એકેય નથી.” 
+  
+  
+  ઇલેક્ટ્રોનિક સાધનોના સંદર્ભમાં પુસ્તક વિશે લેખક આ શું કહે છે? ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": " ઇલેક્ટ્રોનિક સાધનો સામે પુસ્તક હારી જાય. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " રેડિયો, સિનેમા કે એવી બીજી વસ્તુઓ આપણને વધારે આનંદ આપી શકે છે. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " ઇલેક્ટ્રોનિક સાધનો હોવા છતાં પુસ્તકો લુપ્ત થઈ જાય એમ લાગતું નથી.",
+            "isCorrect": true
+          },
+          {
+            "optionText": " વિદ્વાન યોશીદા કેનાક ઇલેક્ટ્રોનિક સાધનોના વિરોધી છે. ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 11
+      },
+      {
+        "questionText": " ગદ્યખંડ વાંચી નીચે આપેલ 2(બે) પ્રશ્નોના જવાબ આપો.- 
+  ભવિષ્યમાં દુનિયા કેવી હશે એ આપણે જાણતા નથી, પણ અત્યારના સિનેમા, રેડિયો, ટી.વી. કે અન્ય ઇલેક્ટ્રોનિક સાધનો સામે પુસ્તક હારી જાય અને લુપ્ત થઈ જાય એમ લાગતું નથી. રેડિયો, સિનેમા કે એવી બીજી વસ્તુઓ આપણને આનંદ આપી શકે છે, માહિતી આપી શકે, પણ પુસ્તકનો આનંદ અને પુસ્તકમાંથી મળતું જ્ઞાન એક અનોખી અને પોતાની વિશિષ્ટતા ધરાવે છે. વાચનમાંથી પોતાને મનગમતાં ચિત્રો માણસ ઊભાં કરી શકે છે. એક પ્રસંગ કે માહિતી વાંચીને પોતાના જીવનમાં બનેલ કોઈક એવા કે તદ્દન ભિન્ન પ્રસંગની સ્મૃતિ માણી શકે છે. આવું આજના બીજા કોઈ સાધનમાં શક્ય નથી. વિદ્વાન યોશીદા કેનાકે સાચું જ કહ્યું છે, “દીવાની પાસે એકલા બેઠા હોઈએ અને સાથે પુસ્તક હોય એના જેવો આનંદ દુનિયામાં એકેય નથી.” 
+  
+  
+  પુસ્તકના વાચન વખતે વાચક શું શું વિચારી શકે? ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": " વાચનમાંથી પોતાને મનગમતાં ચિત્રો માણસ ઊભાં કરી શકે છે. ",
+            "isCorrect": true
+          },
+          {
+            "optionText": " વિદ્વાન યોશીદા કેનાક વિષે વિચારી શકે છે. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "પોતાના ભવિષ્યની ચિંતા કરી શકે છે. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "ઉપરોક્ત પૈકી એકપણ નહીં. ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 12
+      },
+      {
+        "questionText": " નીચે આપેલાં વાક્યોમાંથી શુદ્ધ વાક્ય જણાવો. ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": " મીરાંબાઈ સ્ત્રી કવિ હતા. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " કવિ મીરાંબાઈ સ્ત્રી હતાં. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " મીરાંબાઈ કવિ હતા. ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " ઉપરોક્ત પૈકી એકપણ નહીં. ",
+            "isCorrect": true
+          }
+        ],
+        "questionIndex": 13
+      },
+      {
+        "questionText": " વિરૂદ્ધાર્થી શબ્દ જણાવો : ' સુધા ' ",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": " વિષ ",
+            "isCorrect": true
+          },
+          {
+            "optionText": " અમૃત ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " સુતા ",
+            "isCorrect": false
+          },
+          {
+            "optionText": " પ્રેમ ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 14
+      },
+      {
+        "questionText": "સંધિ વિગ્રહ કરો – તન્વી ?",
+        "testSections": "G",
+        "options": [
+          {
+            "optionText": "તનુ + ઇ ",
+            "isCorrect": true
+          },
+          {
+            "optionText": "ત + અન્વી ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "તન + વિ ",
+            "isCorrect": false
+          },
+          {
+            "optionText": "તન + વી ",
+            "isCorrect": false
+          }
+        ],
+        "questionIndex": 15
+      }
+    ],
+    "totalQuestions": 15,
+    "duration": 60,
+    "testIndex": 0
+  }
+  
