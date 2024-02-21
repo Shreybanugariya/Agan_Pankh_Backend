@@ -126,11 +126,11 @@
                 },
                 {
                     "optionText": "15",
-                    "isCorrect": true
+                    "isCorrect": false
                 },
                 {
                     "optionText": "20",
-                    "isCorrect": false
+                    "isCorrect": true
                 },
                 {
                     "optionText": "22",
@@ -176,11 +176,11 @@
                 },
                 {
                     "optionText": "5/12",
-                    "isCorrect": true
+                    "isCorrect": false
                 },
                 {
                     "optionText": "7/12",
-                    "isCorrect": false
+                    "isCorrect": true
                 }
             ],
             "questionIndex": 8
@@ -230,9 +230,814 @@
                 }
             ],
             "questionIndex": 10
+        },
+          {
+              "questionText": "એક ફેક્ટરીમાં, 20 લોકો દરરોજ 10 કલાક કામ કરીને 15 દિવસમાં 20 રમકડાં બનાવી શકે છે. તો પછી, 25 વ્યક્તિઓ દરરોજ 20 કલાક કામ કરીને 30 રમકડાં કેટલા દિવસમાં બનાવી શકે?",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "6 દિવસ",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "9 દિવસ",
+                      "isCorrect": true
+                  },
+                  {
+                      "optionText": "10 દિવસ",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "12 દિવસ",
+                      "isCorrect": false
+                  }
+              ],
+              "questionIndex": 11
+          },
+          {
+              "questionText": "A 36000 રૂ ના રોકાણ થી એક ધંધો શરુ કરે છે. B તેની સાથે 48000 રૂ ના રોકાણ થી 3 મહિના બાદ જોડાઈ છે. C બીજા 6 મહિના પછી 60000 રૂ ના રોકાણ થી તેમની સાથે જોડાઈ છે. તો વર્ષ ના અંતે તેમના વચ્ચે નફો ક્યાં પ્રમાણ માં વહેંચાઈ?",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "1:1:1",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "2:2:3",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "1:1:2",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "2:2:1",
+                      "isCorrect": true
+                  }
+              ],
+              "questionIndex": 12
+          },
+          {
+              "questionText": "આપેલ સંખ્યા ને વલ્ગાર અપૂર્ણાંક માં ફેરવો.\n0.1777777777……………. ",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "8/45",
+                      "isCorrect": true
+                  },
+                  {
+                      "optionText": "17/100",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "17/99",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "15/91",
+                      "isCorrect": false
+                  }
+              ],
+              "questionIndex": 13
+          },
+          {
+              "questionText": "એક TV 20855 રૂ માં વેચવાથી વેપારી ને ૩% ની ખોટ જાય છે તો તેને ૭% નો નફો મેળવવો હોઈ તો TV ને કેટલા રૂ માં વેચવું જોઈએ?",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "23500",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "23005",
+                      "isCorrect": true
+                  },
+                  {
+                      "optionText": "22750",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "24200",
+                      "isCorrect": false
+                  }
+              ],
+              "questionIndex": 14
+          },
+          {
+              "questionText": "બે શહેરો વચ્ચે ચાલતી ટ્રેન તેના ગંતવ્ય સ્થાને તે 60 કિમી પ્રતિ કલાકની ઝડપે જાય તો 10 મિનિટ મોડી પહોંચે છે અને જ્યારે તે 40 કિમી પ્રતિ કલાકની ઝડપે જાય છે ત્યારે 16 મિનિટ મોડી પડે છે. બે નગરો વચ્ચેનું અંતર નક્કી કરો.?",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "14",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "20",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "12",
+                      "isCorrect": true
+                  },
+                  {
+                      "optionText": "15",
+                      "isCorrect": false
+                  }
+              ],
+              "questionIndex": 15
+          },
+          {
+              "questionText": "એક ક્લબ ના ૩૦ સભ્ય ની સિંગલ્સ બેડમિંટન ટુર્નામેન્ટ રમાડવામાં આવી. જે સભ્ય હારે તે ટુર્નામેન્ટ ની બહાર કરવામાં આવે છે. કોઈ પણ મેચ ટાઈ થતી નથી. તો વિજેતા નક્કી કરવા માટે ઓછા માં ઓછી કેટલી મેચ રમાડવી જોઈએ?",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "15",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "14",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "29",
+                      "isCorrect": true
+                  },
+                  {
+                      "optionText": "61",
+                      "isCorrect": false
+                  }
+              ],
+              "questionIndex": 16
+          },
+          {
+              "questionText": "2 અને 50 નો ગુણોત્તર મઘ્યક શોધો?",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "26",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "10",
+                      "isCorrect": true
+                  },
+                  {
+                      "optionText": "100",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "24",
+                      "isCorrect": false
+                  }
+              ],
+              "questionIndex": 17
+          },
+          {
+              "questionText": "8, 12  અને 18 નું ચોથું પ્રમાણપદ શોધો?",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "24",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "22",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "27",
+                      "isCorrect": true
+                  },
+                  {
+                      "optionText": "30",
+                      "isCorrect": false
+                  }
+              ],
+              "questionIndex": 18
+          },
+          {
+              "questionText": "2 રકમો 4:7  ના પ્રમાણ માં છે, અને બંને ના વર્ગો નો સરવાળો 112 છે તો બંને સંખ્યા વચ્ચે નો તફાવત શોધો?",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "6",
+                      "isCorrect": true
+                  },
+                  {
+                      "optionText": "8",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "12",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "24",
+                      "isCorrect": false
+                  }
+              ],
+              "questionIndex": 19
+          },
+          {
+              "questionText": "એક પાત્ર માં દૂધ 40 લિટર છે. તેમાંથી 4 લિટર દૂધ કાઢી નાખવામાં આવે અને તેટલુંજ પાણી નાખવામાં આવે, આ પ્રક્રિયા કુલ 3 વખત કરીયે તો હવે પાત્ર માં કેટલા લિટર દૂધ હશે?",
+              "testSections": "QA",
+              "options": [
+                  {
+                      "optionText": "32",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "29.16",
+                      "isCorrect": true
+                  },
+                  {
+                      "optionText": "28",
+                      "isCorrect": false
+                  },
+                  {
+                      "optionText": "20",
+                      "isCorrect": false
+                  }
+              ],
+              "questionIndex": 20
+          },
+          {
+            "questionText": "ગાય અને મરઘીઓના જૂથમાં, પગની સંખ્યા માથાની સંખ્યાના  બમણા  કરતાં પણ 14 વધુ છે. તો ગાયોની સંખ્યા શોધો.",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "5",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "7",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "10",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "14",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 21
+        },
+        {
+          "questionText": "એક વર્ગમાં, 3/5 વિદ્યાર્થીઓ છોકરીઓ છે અને બાકીના છોકરાઓ છે. જો 2/9 છોકરીઓ અને 1/4 છોકરાઓ ગેરહાજર હોય, તો વિદ્યાર્થીઓની કુલ સંખ્યાનો કેટલો ભાગ હાજર છે?",
+          "testSections": "QA",
+          "options": [
+              {
+                  "optionText": "17/25",
+                  "isCorrect": false
+              },
+              {
+                  "optionText": "18/49",
+                  "isCorrect": false
+              },
+              {
+                  "optionText": "23/30",
+                  "isCorrect": true
+              },
+              {
+                  "optionText": "23/36",
+                  "isCorrect": false
+              }
+          ],
+          "questionIndex": 22
+      },
+      {
+        "questionText": "રાજેશ એક વસ્તુ ની છાપેલ કિંમત ઉપર ૨૫% વળતર મેળવી ને વસ્તુ ખરીદે છે. તદુપરાંત તેઈ વસ્તુ ની છાપેલ કિંમત કરતા પણ ૨૦% ઊંચી કિંમત પાર વસ્તુ વેચી દે છે. તો તેને એકંદરે નફો કેટલા % થશે?",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "30%",
+                "isCorrect": false
+            },
+            {
+                "optionText": "45%",
+                "isCorrect": false
+            },
+            {
+                "optionText": "50%",
+                "isCorrect": false
+            },
+            {
+                "optionText": "60%",
+                "isCorrect": true
+            }
+        ],
+        "questionIndex": 23
+    },
+    {
+      "questionText": "ત્રણ ઉમેદવારો, A, B અને C એ ચૂંટણી લડી અને અનુક્રમે 1800, 3300 અને 3900 મત મેળવ્યા. A ને કુલ મતોના કેટલા ટકા મળ્યા?",
+      "testSections": "QA",
+      "options": [
+          {
+              "optionText": "20",
+              "isCorrect": true
+          },
+          {
+              "optionText": "40",
+              "isCorrect": false
+          },
+          {
+              "optionText": "45",
+              "isCorrect": false
+          },
+          {
+              "optionText": "70",
+              "isCorrect": false
+          }
+      ],
+      "questionIndex": 24
+      },
+      {
+        "questionText": "બે શહેરો વચ્ચે ચાલતી ટ્રેન તેના ગંતવ્ય સ્થાને તે 60 કિમી પ્રતિ કલાકની ઝડપે જાય તો 10 મિનિટ મોડી પહોંચે છે અને જ્યારે તે 40 કિમી પ્રતિ કલાકની ઝડપે જા",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "14",
+                "isCorrect": false
+            },
+            {
+                "optionText": "20",
+                "isCorrect": false
+            },
+            {
+                "optionText": "12",
+                "isCorrect": true
+            },
+            {
+                "optionText": "15",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 25
+      },
+      {
+        "questionText": "પોતાની સામાન્ય ઝડપ ના 5/7 ઝડપે જાય તો એક માણસ 16 મિનિટ મોડો પહોંચે છે. તો તેનો સામાન્ય  સમય શોધો?",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "80 મિનિટ",
+                "isCorrect": false
+            },
+            {
+                "optionText": "40 મિનિટ",
+                "isCorrect": true
+            },
+            {
+                "optionText": "102 મિનિટ",
+                "isCorrect": false
+            },
+            {
+                "optionText": "56 મિનિટ",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 26
+    },
+    {
+        "questionText": "250 મીટર લંબાઈની ટ્રેન 60 કિમી/કલાકની ઝડપે દોડે છે. રેલ્વે સ્ટેશન પર ઊભેલી કોઈપણ સ્થિર વસ્તુને પાર કરવામાં કેટલો સમય લાગશે?",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "12s",
+                "isCorrect": false
+            },
+            {
+                "optionText": "15s",
+                "isCorrect": true
+            },
+            {
+                "optionText": "20s",
+                "isCorrect": false
+            },
+            {
+                "optionText": "24s",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 27
+    },
+    {
+        "questionText": "એક બોટ સ્થિર પાણીમાં 13 કિમી/કલાકની ઝડપે મુસાફરી કરી શકે છે. જો પ્રવાહની ઝડપ 4 કિમી/કલાક હોય, તો બોટ દ્વારા 68 કિમી પ્રવાહ ની સાથે (ડાઉનસ્ટ્રીમમાં) જવા માટે લાગેલો સમય શોધો.",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "3 કલાક",
+                "isCorrect": false
+            },
+            {
+                "optionText": "4 કલાક",
+                "isCorrect": true
+            },
+            {
+                "optionText": "5 કલાક",
+                "isCorrect": false
+            },
+            {
+                "optionText": "7.5 કલાક",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 28
+    },
+    {
+        "questionText": "X + 1/X = 3, તો X^3 + 1/X^3 = ?",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "18",
+                "isCorrect": true
+            },
+            {
+                "optionText": "27",
+                "isCorrect": false
+            },
+            {
+                "optionText": "9",
+                "isCorrect": false
+            },
+            {
+                "optionText": "45",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 29
+    },
+    {
+      "questionText": "360 મીટર લાંબી ટ્રેન 45 કિમી પ્રતિ કલાકની ઝડપે દોડી રહી છે. 140 મીટર લાંબો પુલ કેટલા સમયમાં પસાર થશે?",
+      "testSections": "QA",
+      "options": [
+          {
+              "optionText": "40s",
+              "isCorrect": true
+          },
+          {
+              "optionText": "42s",
+              "isCorrect": false
+          },
+          {
+              "optionText": "44s",
+              "isCorrect": false
+          },
+          {
+              "optionText": "46s",
+              "isCorrect": false
+          }
+      ],
+      "questionIndex": 30
+    },
+    // English
+    {
+        "questionText": "read the following passage and answer the question that follows. Erosion of America's farmland by wind and water has been a problem since settlers first put the prairies and grasslands under the Plow in the nineteenth century. By the 1930s, more than 282 million acres of farmland were damaged by erosion. After 40 years of conservation efforts, soil erosion has accelerated due to new demands placed on the land by heavy crop production. In the years ahead, soil erosion and the pollution problems it causes are likely to replace petroleum scarcity as the nation's most critical natural resource problem. It is pointed out in the reading that in America ___.",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "petroleum is causing heavy soil erosion and pollution problems",
+                "isCorrect": false
+            },
+            {
+                "optionText": "Heavy crop production is necessary to meet the demands and to prevent a disaster",
+                "isCorrect": false
+            },
+            {
+                "optionText": "Soil erosion has been hastened due to the overuse of farming lands",
+                "isCorrect": true
+            },
+            {
+                "optionText": "Water is undoubtedly the largest cause of erosion",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 1
+    },
+    {
+        "questionText": "which of the following is not a synonym of the word 'Stoic'?",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "passionate",
+                "isCorrect": true
+            },
+            {
+                "optionText": "unemotional",
+                "isCorrect": false
+            },
+            {
+                "optionText": "impassive",
+                "isCorrect": false
+            },
+            {
+                "optionText": "indifferent",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 2
+    },
+    {
+        "questionText": "Which of the following is antonym of the word 'Whimsical'?",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "stable",
+                "isCorrect": true
+            },
+            {
+                "optionText": "racist",
+                "isCorrect": false
+            },
+            {
+                "optionText": "eccentric",
+                "isCorrect": false
+            },
+            {
+                "optionText": "unpredictable",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 3
+    },
+    {
+        "questionText": "Choose an option, which can be substituted for a given sentence out of given options: A person who is intolerant towards others",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "Bigot",
+                "isCorrect": true
+            },
+            {
+                "optionText": "Fatalist",
+                "isCorrect": false
+            },
+            {
+                "optionText": "Impromptu",
+                "isCorrect": false
+            },
+            {
+                "optionText": "Narcissist",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 4
+    },
+    {
+        "questionText": "In the following narration mcq, a sentence has been given in direct/indirect form. Out of the four alternatives choose the one which best expresses the same sentence in indirect/direct form. “What are you doing here?”, she asked me.",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "She asked what I was doing here.",
+                "isCorrect": false
+            },
+            {
+                "optionText": "She wanted to know what I am doing here.",
+                "isCorrect": false
+            },
+            {
+                "optionText": "She wants to know what I was doing here.",
+                "isCorrect": false
+            },
+            {
+                "optionText": "She wanted to know what I was doing there.",
+                "isCorrect": true
+            }
+        ],
+        "questionIndex": 5
+    },
+    {
+        "questionText": "Your room is so untidy! Please _______ the clothes and put them in the washing machine.",
+        "testSections": "QA",
+        "options": [
+            {
+                "optionText": "Stand up",
+                "isCorrect": false
+            },
+            {
+                "optionText": "Pick up",
+                "isCorrect": true
+            },
+            {
+                "optionText": "Get on",
+                "isCorrect": false
+            },
+            {
+                "optionText": "Turn off",
+                "isCorrect": false
+            }
+        ],
+        "questionIndex": 6
+    },
+    {
+      "questionText": "Your room is so untidy! Please _______ the clothes and put them in the washing machine.",
+      "testSections": "QA",
+      "options": [
+          {
+              "optionText": "Stand up",
+              "isCorrect": false
+          },
+          {
+              "optionText": "Pick up",
+              "isCorrect": true
+          },
+          {
+              "optionText": "Get on",
+              "isCorrect": false
+          },
+          {
+              "optionText": "Turn off",
+              "isCorrect": false
+          }
+      ],
+      "questionIndex": 7
+  },
+  {
+      "questionText": "two friends quarreled with each other ________ a trifle.",
+      "testSections": "QA",
+      "options": [
+          {
+              "optionText": "for",
+              "isCorrect": false
+          },
+          {
+              "optionText": "over",
+              "isCorrect": true
+          },
+          {
+              "optionText": "above",
+              "isCorrect": false
+          },
+          {
+              "optionText": "upon",
+              "isCorrect": false
+          }
+      ],
+      "questionIndex": 8
+  },
+  {
+      "questionText": "Change Active Voice into Passive Voice: 'The people were helping the wounded woman.'",
+      "testSections": "QA",
+      "options": [
+          {
+              "optionText": "The wounded woman was being helped by the people.",
+              "isCorrect": true
+          },
+          {
+              "optionText": "The wounded woman was helped by the people.",
+              "isCorrect": false
+          },
+          {
+              "optionText": "The wounded woman was been helped by the people.",
+              "isCorrect": false
+          },
+          {
+              "optionText": "The people helped the wounded woman.",
+              "isCorrect": false
+          }
+      ],
+      "questionIndex": 9
+  },
+  {
+      "questionText": "Go through the sentences provided below and identify the type of tense: 'The sick child has been sleeping for three hours.'",
+      "testSections": "QA",
+      "options": [
+          {
+              "optionText": "Present Perfect Tense",
+              "isCorrect": false
+          },
+          {
+              "optionText": "Present Perfect Continuous Tense",
+              "isCorrect": true
+          },
+          {
+              "optionText": "Present Perfect Tense",
+              "isCorrect": false
+          },
+          {
+              "optionText": "Past Continuous Tense",
+              "isCorrect": false
+          }
+      ],
+      "questionIndex": 10
+  },
+  {
+      "questionText": "Fill in the blank with the appropriate article. King Samudragupta was ___ just king.",
+      "testSections": "QA",
+      "options": [
+          {
+              "optionText": "an",
+              "isCorrect": false
+          },
+          {
+              "optionText": "the",
+              "isCorrect": false
+          },
+          {
+              "optionText": "a",
+              "isCorrect": true
+          },
+          {
+              "optionText": "none of the above",
+              "isCorrect": false
+          }
+      ],
+      "questionIndex": 11
+  },
+  {
+      "questionText": "Fill in the blank by choosing the most appropriate adverb from the options. Sanvi ran to her mother ____.",
+      "testSections": "QA",
+      "options": [
+          {
+              "optionText": "Quickly",
+              "isCorrect": true
+          },
+          {
+              "optionText": "Often",
+              "isCorrect": false
+          },
+          {
+              "optionText": "Forward",
+              "isCorrect": false
+          },
+          {
+              "optionText": "Once",
+              "isCorrect": false
+          }
+      ],
+      "questionIndex": 12
+  },
+  {
+      "questionText": "You are required to rearrange these parts, which are labelled P, Q, R and S to produce the correct sentence.",
+      "testSections": "QA",
+      "options": [
+          {
+              "optionText": "RPSQ",
+              "isCorrect": true
+          },
+          {
+              "optionText": "SRQP",
+              "isCorrect": false
+          },
+          {
+              "optionText": "QPRS",
+              "isCorrect": false
+          },
+          {
+              "optionText": "PRSQ",
+              "isCorrect": false
+          }
+      ],
+      "questionIndex": 13
+  },
+  {
+    "questionText": "Translate the following sentence from English to Gujarati. 'In case someone asks you something you do not know, see to it that you do not give them the wrong information.'",
+    "testSections": "QA",
+    "options": [
+        {
+            "optionText": "જો કોઈ વ્યક્તિ તમને ખબર હોય તેવું કંઈક પૂછે, તો તમે તેને ખોટી માહિતી ન આપો તેનું ધ્યાન રાખો.",
+            "isCorrect": false
+        },
+        {
+            "optionText": "જો કોઈ તમને કંઈક એવું પૂછે જે તમે જાણતા નથી, તો તમે તેને ખોટી માહિતી ન આપો તેનું ધ્યાન રાખો.",
+            "isCorrect": true
+        },
+        {
+            "optionText": "જો દરેક વ્યક્તિ તમને કંઈક એવું પૂછે જે તમે જાણો છો, તો તમે તેમને ખોટી માહિતી ન આપો તેનું ધ્યાન રાખો.",
+            "isCorrect": false
+        },
+        {
+            "optionText": "જો કોઈ વ્યક્તિ તમને ખબર ન હોય તેવું કંઈક પૂછે, તો જુઓ કે તમે તેમને ખોટી માહિતી આપો છો.",
+            "isCorrect": false
         }
-
-        ///
+    ],
+    "questionIndex": 14
+},
+{
+    "questionText": "Read the following sentence and select the correct form of the verb. __ he not moved to a new city he wouldn’t be sick.",
+    "testSections": "QA",
+    "options": [
+        {
+            "optionText": "Had",
+            "isCorrect": true
+        },
+        {
+            "optionText": "Have",
+            "isCorrect": false
+        },
+        {
+            "optionText": "Has",
+            "isCorrect": false
+        },
+        {
+            "optionText": "Are",
+            "isCorrect": false
+        }
+    ],
+    "questionIndex": 15
+},
+        /// Gujarati
       {
         "questionText": " નીચે વર્ણવેલા છે તેમાંથી કયા/ કઈ રૂઢિપ્રયોગનો અને અર્થનું જોડકું સાચું નથી? ",
         "testSections": "G",
