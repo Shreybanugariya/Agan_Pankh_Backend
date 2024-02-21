@@ -51,7 +51,7 @@ controllers.accessTestQuestions = async (req, res) => {
                 if (testresults.isVisited.includes(a.questionIndex)) a.isVisited = true
                 if (testresults.isReviewed.includes(a.questionIndex)) a.isReviewed = true
             }
-            return res.status(200).json({ message: 'Test is on going', test, testSession,questionsAttempted: testresults.answers })
+            return res.status(200).json({ message: 'Test is on going', test, testSession, questionsAttempted: testresults.answers, isVisited: testresults.isVisited, isReviewed: isReviewed})
         } else if (testresults && testresults.isCompleted) return res.status(200).json({ message: 'Test completed', score: testresults.score })
 
         if (test.testIndex > 0) {

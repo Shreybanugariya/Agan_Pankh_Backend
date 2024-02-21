@@ -13,8 +13,8 @@ router.post('/admin/add-test', adminAuthMiddleware, validators.addTest, controll
 router.put('/admin/update-test/:id', adminAuthMiddleware, validators.addTest, controllers.updateTest)
 router.post('/admin/add-question/:id', adminAuthMiddleware, validators.addQuestionsToTest, controllers.addQuestionsToTest)
 router.put('/admin/update-question/:id', validators.updateQuestion, controllers.updateQuestion)
-router.get('/admin/publish-test/:id', adminAuthMiddleware, validators.addQuestionsToTest, controllers.addQuestionsToTest)
-router.post('/admin/add-image/:id', adminAuthMiddleware, validators.addImage, controllers.addImagesToTest)
+router.get('/admin/publish-test/:id', adminAuthMiddleware, validators.addQuestionsToTest, controllers.publishTest)
+router.post('/admin/add-image', adminAuthMiddleware, validators.addImage, controllers.addImagesToTest)
 router.get('/admin/get-image/:id', adminAuthMiddleware, controllers.getTestImages)
 router.put('/admin/update-image/:id', adminAuthMiddleware, controllers.updateImage)
 

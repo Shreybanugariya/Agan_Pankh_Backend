@@ -10,6 +10,7 @@ const questionSchema = new mongoose.Schema({
     questionText: { type: String, required: true },
     testSections: { type: String, enum: ['R', 'QA', 'E', 'G'], required: true, default: 'R'}, // R - Reasoning, QA - Quantitative Apptitute, E - English, G - Gujarati
     queImage: { type: String },
+    specialImage: { type: String },
     options: [optionSchema],
     questionIndex: { type: Number, required: true, unique: true, index: true },
 });
