@@ -46,12 +46,21 @@ controllers.accessTestQuestions = async (req, res) => {
 
         const testresults = await TestResult.findOne({ userId, testId }, { isCompleted: 1, score: 1, answers: 1, isVisited: 1, isReviewed: 1 }).lean();
         if (testresults && !testresults.isCompleted) {
-            const answers = testresults.answers
-            for (const a of answers) {
-                if (testresults.isVisited.includes(a.questionIndex)) a.isVisited = true
-                if (testresults.isReviewed.includes(a.questionIndex)) a.isReviewed = true
+            const questionsAttempted = [];
+            const {answers, isVisited, isReviewed} = testresults
+            for (const question of test.questions) {
+                const questionIndex = question.questionIndex;
+                const mergedObject = { questionIndex };
+
+                const answer = answers.find(ans => ans.questionIndex === questionIndex);
+                if (answer) mergedObject.selectedOptionIndex = answer.selectedOptionIndex;
+
+                if (isVisited.includes(questionIndex)) mergedObject.isVisited = true;
+                if (isReviewed.includes(questionIndex)) mergedObject.isReviewed = true;
+
+                if (answer || mergedObject.isVisited || mergedObject.isReviewed) questionsAttempted.push(mergedObject);
             }
-            return res.status(200).json({ message: 'Test is on going', test, testSession, questionsAttempted: testresults.answers })
+            return res.status(200).json({ message: 'Test is on going', test, testSession, questionsAttempted })
         } else if (testresults && testresults.isCompleted) return res.status(200).json({ message: 'Test completed', score: testresults.score })
 
         if (test.testIndex > 0) {
