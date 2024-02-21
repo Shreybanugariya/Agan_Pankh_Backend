@@ -10,7 +10,7 @@ router.post('/post-answer/:id', authenticateUser, controllers.addAnswerToTest)
 
 // Admin APIs
 router.post('/admin/add-test', adminAuthMiddleware, validators.addTest, controllers.addTest)
-router.put('/admin/update-test/:id', adminAuthMiddleware, validators.addTest, controllers.addTest)
+router.put('/admin/update-test/:id', adminAuthMiddleware, validators.addTest, controllers.updateTest)
 router.post('/admin/add-question/:id', adminAuthMiddleware, validators.addQuestionsToTest, controllers.addQuestionsToTest)
 router.put('/admin/update-question/:id', validators.updateQuestion, controllers.updateQuestion)
 router.get('/admin/publish-test/:id', adminAuthMiddleware, validators.addQuestionsToTest, controllers.addQuestionsToTest)
