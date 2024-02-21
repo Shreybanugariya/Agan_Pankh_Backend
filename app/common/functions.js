@@ -42,7 +42,7 @@ const calculateScore = (questions, answers) => {
   for (const userAnswer of answers) {
     const correctOptionIndices = correctOptionsMap.get(userAnswer.questionIndex);
     if (!correctOptionIndices) continue;
-
+    console.log('In For Loop', score)
     const selectedOptionIndex = userAnswer.selectedOptionIndex;
     if (correctOptionIndices.includes(selectedOptionIndex)) score++;
     else score -= 0.25
