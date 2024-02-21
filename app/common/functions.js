@@ -37,17 +37,15 @@ const calculateScore = (questions, answers) => {
     }, []);
     correctOptionsMap.set(question.questionIndex, correctOptionIndices);
   }
-  console.log(answers.length)
   if (!answers.length) return score = 0
   for (const userAnswer of answers) {
     const correctOptionIndices = correctOptionsMap.get(userAnswer.questionIndex);
     if (!correctOptionIndices) continue;
-    console.log('In For Loop', score)
+
     const selectedOptionIndex = userAnswer.selectedOptionIndex;
     if (correctOptionIndices.includes(selectedOptionIndex)) score++;
     else score -= 0.25
   }
-  console.log('at calculateScore', score)
   return score
 }
 
@@ -55,18 +53,17 @@ common.submitTestAndCalulateResult = async ({ userId, testId }, submitedAnswers)
   const test = await Tests.findById(testId);
   const testResults = await TestResults.findOne({ userId, testId }).lean()
   await User.updateOne({ _id: userId }, { currentTestIndex: test.testIndex + 1 })
-
   if (submitedAnswers && submitedAnswers.length) {
-    console.log('submitedAnswers', submitedAnswers.length)
     const score = calculateScore(test.questions, submitedAnswers)
     await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
     return score
   } else {
     const testResults = await TestResults.findOne({ userId, testId }).lean()
+    if (!testResults) return 0
     if (testResults.isCompleted) return testResults.score
 
     const { answers } = testResults
-    console.log('answers', answers.length)
+    if (!answers.length) return 0
     const score = calculateScore(test.questions, answers)
     await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
     return score;
