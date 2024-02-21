@@ -171,6 +171,18 @@ controllers.addTest = async (req, res) => {
     }
 }
 
+controllers.updateTest = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const test = await Tests.updateOne({ _id: id }, req.body);
+        if (test) return res.status(200).json({ message: 'Test Added Successfully', test: newTest })
+        return res.status(400).json({ message: 'Error while updating test' })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
+
 // Add Questions to Test
 controllers.addQuestionsToTest = async (req, res) => {
     try {
@@ -207,7 +219,19 @@ controllers.updateQuestion = async (req, res) => {
         console.error(error);
         res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
+}
 
+controllers.updateImage = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { imageUrl } = req.body
+        const testUpdate = await TestImage.findOneAndUpdate({ _id: id }, { $set: { imageUrl } }, { new: true })
+        if (testUpdate) return res.status(200).json({ message: 'Image Updated Successfully', data: testUpdate.image })
+        return res.status(400).json({ message: 'There was an error updating the image' })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
 }
 
 controllers.publishTest = async (req, res) => {
