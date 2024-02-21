@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const controllers = require('./controllers');
-const authMiddleware = require('../common/middleware')
+const { authenticateUser }= require('../common/middleware')
 
-router.post('/create-payment', authMiddleware, controllers.createOrder)
+router.post('/create-payment', authenticateUser, controllers.createOrder)
 router.post('/order/capture-payment', controllers.paymentCapture) // Webhook
-router.post('/create-payment/upi', authMiddleware, controllers.createUPILink)
+router.post('/create-payment/upi', authenticateUser, controllers.createUPILink)
 
 module.exports = router;

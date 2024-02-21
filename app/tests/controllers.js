@@ -1,5 +1,6 @@
 const Tests = require('./model')
 const TestSession = require('./testSession.model')
+const TestImage = require('./testImages.model')
 const TestResult = require('../testresults/model')
 const { checkPreviousTestCleared, submitTestAndCalulateResult } = require('../common/functions')
 const ObjectId = require('mongoose').Types.ObjectId
@@ -158,16 +159,103 @@ controllers.addAnswerToTest = async (req, res) => {
 
 controllers.addTest = async (req, res) => {
     try {
-        // Gather Previous test index
-        // Create Test
-        // Use Test ID to add images for it
+        const { testName = "New Test", totalQuestions = 100, duration = 60 } = req.body;
+        const test = await Tests.findOne({}, { testIndex: 1}).sort({ testIndex: -1 }).lean();
+        const testIndex = test? test.testIndex + 1 : 0;
+        const newTest = await Tests.create({ testName, totalQuestions, duration, testIndex, readyToShow: false});
 
+        if (newTest) return res.status(200).json({ message: 'Test Added Successfully', test: newTest })
     } catch (error) {
         console.error(error);
         res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
 
-// Post Questions to Test
-// Ony after all the questions are updated the test should show in the list
+// Add Questions to Test
+controllers.addQuestionsToTest = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { questions } = req.body
+        const test = await Tests.findById(id)
+        if (!test) return res.status(404).json({ message: 'Test not found' })
+
+        if (!questions.length) {
+            test.questions = questions
+            await test.save()
+            return res.status(200).json({ message: 'Questions Added Successfully' })
+        }
+        if (questions.length > test.totalQuestions) return res.status(400).json({ message: 'Enough Questions Already' })
+        for (const question of questions) {
+            test.questions.push(question)
+        }
+        await test.save()
+        return res.status(200).json({ message: 'Questions Added Successfully' })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
+
+controllers.updateQuestion = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { question } = req.body
+        const testUpdate = await Tests.findOneAndUpdate({ _id: id, 'questions.questionIndex': question.questionIndex }, { $set: { 'questions.$': question } }, { new: true })
+        if (testUpdate) return res.status(200).json({ message: 'Question Updated Successfully', data: testUpdate.questions[1] })
+        return res.status(400).json({ message: 'There was an error updating the question' })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+
+}
+
+controllers.publishTest = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { publishTest } = req.query
+        const test = await Tests.findById(id)
+        if (!test) return res.status(404).json({ message: 'Test not found' })
+        if (!publishTest) {
+            if (!test.readyToShow) return res.status(400).json({ message: 'Test is already Un-Published' })
+            test.readyToShow = false
+            await test.save()
+            return res.status(200).json({ message: 'Test Un-Published Successfully' })
+        }
+        if (test.questions.length !== test.totalQuestions) return res.status(400).json({ message: `${ test.totalQuestions} Should be added to Publish the test` })
+        test.readyToShow = true
+        await test.save()
+        return res.status(200).json({ message: 'Test Published Successfully' })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
+// API to add Images to Test
+controllers.addImagesToTest = async (req, res) => {
+    try {
+        const testImage = await TestImage.create(req.body)
+        if (testImage) return res.status(200).json({ message: 'Image Added Successfully' })
+        return res.status(400).json({ message: 'There is an error creating the Image' })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
+
+controllers.getTestImages = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { limit = 30, offset=0 } = req.query
+        const test = await Tests.findById(id)
+        if (!test) return res.status(404).json({ message: 'Test not found' })
+        const testImages = await TestImage.find({ testId: test._id }).limit(limit).skip(offset).lean()
+        if (!testImages.length) return res.status(404).json({ message: 'Test Images not found' })
+        return res.status(200).json({ testImages })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
+// API to get Users' Info (Logged in, Subscribed, Test Givnen)
 module.exports = controllers

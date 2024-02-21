@@ -18,4 +18,18 @@ const authenticateUser = async (req, res, next) => {
     }
 };
 
-module.exports = authenticateUser;
+const adminAuthMiddleware = async (req, res) => {
+  const token = req.header('Authorization');
+  if (!token) return res.status(200).json({ error: 'Unauthorized - No token provided' });
+  
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET_KEY);
+    const { email } = decoded
+    if (!email || email !== 'admin@aganpankh.admin.com') return res.status(401).json({ error: 'Unauthorized' });
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: 'Unauthorized - Invalid token' });
+  } 
+};
+
+module.exports = { authenticateUser, adminAuthMiddleware};
