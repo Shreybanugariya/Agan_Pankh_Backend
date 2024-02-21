@@ -37,6 +37,7 @@ const calculateScore = (questions, answers) => {
     }, []);
     correctOptionsMap.set(question.questionIndex, correctOptionIndices);
   }
+  console.log(answers.length)
   if (!answers.length) return score = 0
   for (const userAnswer of answers) {
     const correctOptionIndices = correctOptionsMap.get(userAnswer.questionIndex);
@@ -56,6 +57,7 @@ common.submitTestAndCalulateResult = async ({ userId, testId }, submitedAnswers)
   await User.updateOne({ _id: userId }, { currentTestIndex: test.testIndex + 1 })
 
   if (submitedAnswers && submitedAnswers.length) {
+    console.log('submitedAnswers', submitedAnswers.length)
     const score = calculateScore(test.questions, submitedAnswers)
     await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
     return score
@@ -64,6 +66,7 @@ common.submitTestAndCalulateResult = async ({ userId, testId }, submitedAnswers)
     if (testResults.isCompleted) return testResults.score
 
     const { answers } = testResults
+    console.log('answers', answers.length)
     const score = calculateScore(test.questions, answers)
     await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
     return score;
