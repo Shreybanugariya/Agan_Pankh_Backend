@@ -8,7 +8,7 @@ const controllers = {}
 
 controllers.getTestLists = async (req, res) => {
     try {
-        const tests = await Tests.find({}, { testName: 1, totalQuestions: 1, duration: 1, testIndex : 1 }).sort({ testIndex: 1 }).lean()
+        const tests = await Tests.find({}, { testName: 1, totalQuestions: 1, duration: 1, testIndex : 1, readyToShow: 1 }).sort({ testIndex: 1 }).lean()
         if (!tests.length) return res.status(400).json({ message: 'There was an error Loading the test, Please try again later.' })
         const user = req.user
         for (const t of tests) {
@@ -155,4 +155,19 @@ controllers.addAnswerToTest = async (req, res) => {
         res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
+
+controllers.addTest = async (req, res) => {
+    try {
+        // Gather Previous test index
+        // Create Test
+        // Use Test ID to add images for it
+
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
+
+// Post Questions to Test
+// Ony after all the questions are updated the test should show in the list
 module.exports = controllers
