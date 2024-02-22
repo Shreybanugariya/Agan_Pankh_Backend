@@ -2,6 +2,1089 @@
     "testName": "Test 1",
     "questions": [
         {
+            "questionText": "એક પિતા તેના પુત્રને કહે છે, \"તારો જન્મ થયો ત્યારે હું તારી આજની ઉંમરનો હતો.\" જો પિતા અત્યારે 36 વર્ષના છે, તો પાંચ વર્ષ પહેલાં છોકરો કેટલો વર્ષનો હતો?",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "A 10",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 12",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 13",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D 18",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 1
+        },
+        {
+            "questionText": "1992 ની સરખામણીમાં 1998 માં 55AH બેટરીના વેચાણમાં અંદાજિત ટકાવારીનો વધારો કેટલો હતો?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708622756/exdegz5vlmchtmofwmrq.jpg",
+            "options": [
+                {
+                    "optionText": "A 28%",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 31%",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 33%",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 34%",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 2
+        },
+        {
+            "questionText": "તમામ સાત વર્ષનું કુલ વેચાણ કઈ બેટરી માટે મહત્તમ છે?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708622756/exdegz5vlmchtmofwmrq.jpg",
+            "options": [
+                {
+                    "optionText": "A 4AH",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 7AH",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 32AH",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D 35AH",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 3
+        },
+        {
+            "questionText": "1993 અને 1997માં વેચાયેલી 35AH બેટરીની સંખ્યામાં શું તફાવત છે?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708622756/exdegz5vlmchtmofwmrq.jpg",
+            "options": [
+                {
+                    "optionText": "A 24000",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 28000",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 35000",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 39000",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 4
+        },
+        {
+            "questionText": "કઈ બેટરીના કિસ્સામાં 1992 થી 1997 દરમિયાન વેચાણમાં સતત ઘટાડો જોવા મળ્યો હતો?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708622756/exdegz5vlmchtmofwmrq.jpg",
+            "options": [
+                {
+                    "optionText": "A 4AH",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 7AH",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "C 32AH",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 35AH",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 5
+        },
+        {
+            "questionText": "બંને વર્ષો માટે શાખા B2 ના કુલ વેચાણ અને બંને વર્ષો માટે શાખા B4 ના કુલ વેચાણનો ગુણોત્તર શું છે?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708623357/dox3erfuo494unt0zkgh.jpg",
+            "options": [
+                {
+                    "optionText": "A 2:3",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 3:5",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 4:5",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 7:9",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 6
+        },
+        {
+            "questionText": "બંને વર્ષો માટે શાખા B6 નું કુલ વેચાણ બંને વર્ષો માટે શાખા B3 ના કુલ વેચાણના કેટલા ટકા છે?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708623357/dox3erfuo494unt0zkgh.jpg",
+            "options": [
+                {
+                    "optionText": "A 68.54%",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 71.11%",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 73.17%",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D 75.55%",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 7
+        },
+        {
+            "questionText": "વર્ષ 2000 માટે તમામ શાખાઓનું સરેરાશ વેચાણ (હજાર સંખ્યામાં) કેટલું છે?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708623357/dox3erfuo494unt0zkgh.jpg",
+            "options": [
+                {
+                    "optionText": "A 73",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 80",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 83",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D 88",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 8
+        },
+        {
+            "questionText": "નીચે આપેલા દરેક પ્રશ્નમાં એક પ્રશ્ન અને તેની નીચે આપેલા I અને II નંબરવાળા બે વિધાનોનો સમાવેશ થાય છે. તમારે નક્કી કરવું પડશે કે નિવેદનોમાં આપવામાં આવેલ ડેટા પ્રશ્નનો જવાબ આપવા માટે પૂરતો છે કે કેમ. બંને નિવેદનો વાંચો અને જવાબ આપો (A) જો વિધાન I માંનો ડેટા એકલા પ્રશ્નનો જવાબ આપવા માટે પૂરતો છે, જ્યારે વિધાન II માંનો ડેટા એકલા પ્રશ્નનો જવાબ આપવા માટે પૂરતો નથી (B) જો વિધાન II માંનો ડેટા એકલા પ્રશ્નનો જવાબ આપવા માટે પૂરતો છે, જ્યારે વિધાન I માંનો ડેટા એકલો પ્રશ્નનો જવાબ આપવા માટે પૂરતો નથી (C) જો એકલા વિધાન I માં અથવા એકલા વિધાન II માં ડેટા પ્રશ્નનો જવાબ આપવા માટે પૂરતા છે (D) જો બંને વિધાન I અને II માં આપેલ ડેટા એકસાથે પ્રશ્નનો જવાબ આપવા માટે પૂરતા નથી. ",
+            "testSections": "QA",
+            "options": [
+                {
+                    "optionText": "A.  I એકલો પૂરતો છે જ્યારે II એકલો પૂરતો નથી",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B.  એકલો II પૂરતો છે જ્યારે I એકલો પૂરતો નથી",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C. કા તો I અથવા II પર્યાપ્ત છે",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D. I કે II બંને પર્યાપ્ત નથી",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 9
+        },
+        {
+            "questionText": "35 : 925 :: 17 : ?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 234",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 149",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "C 194",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 123",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 10
+        },
+        {
+            "questionText": "પ્રશ્ન: M ને કેટલા બાળકો છે?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A I એકલો પૂરતો છે જ્યારે II એકલો પૂરતો નથી",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B એકલો II પૂરતો છે જ્યારે I એકલો પૂરતો નથી",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C કા તો I અથવા II પર્યાપ્ત છે",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D I કે II બંને પર્યાપ્ત નથી",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 11
+        },
+        {
+            "questionText": "નીચે મુજબ એક કાગળ વાળવામાં આવે છે, અને ત્યારબાદ તેમાં દર્શાવ્યા મુજબ કાપવામાં આવે છે. તો કાગળ ને ખોલતા તે કેવો દેખાશે",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708625268/dnmdcy60vbf8esbafuaf.jpg",
+            "options": [
+                {
+                    "optionText": "A  A",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708624863/af8jqjhrusbaeec52oj3.jpg",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B  B",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708625307/mr2ih1tubgjythzjdhyd.jpg",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C  C",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708625325/ucf48ux3m7tfvtoddrel.jpg",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D  D",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708625351/tdatfui0lhuc5mfhki37.jpg",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 12
+        },
+        {
+            "questionText": "પ્રશ્ન આકૃતિનો ખૂટતો ભાગ ઓળખો અને આપેલ જવાબ માંથી તેને પસંદ કરો.",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708625406/fr4vryoj7rbjhgwq1xll.jpg",
+            "options": [
+                {
+                    "optionText": "A A",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B B",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C C",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D D",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 13
+        },
+        {
+            "questionText": "નીચે મુજબ એક કાગળ વાળવામાં આવે છે, અને ત્યારબાદ તેમાં દર્શાવ્યા મુજબ કાપવામાં આવે છે. તો કાગળ ને ખોલતા તે કેવો દેખાશે",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708625462/wl6dxvc9n5yhcyeajn8r.jpg",
+            "options": [
+                {
+                    "optionText": "A A",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B B",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C C",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D D",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 14
+        },
+        {
+            "questionText": "પ્રશ્ન આકૃતિનો ખૂટતો ભાગ ઓળખો અને આપેલ જવાબના આંકડાઓમાંથી તેને પસંદ કરો",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708625520/a3rmrrnq7laqroalkuy0.jpg",
+            "options": [
+                {
+                    "optionText": "A A",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B B",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C C",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D D",
+                    "optImage": "",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 15
+        },
+        {
+            "questionText": "આપેલ જવાબના આંકડાઓમાંથી શ્રેણીમાં ખૂટતી આકૃતિ શોધો.",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708625569/zkmfgyqsadqnl0uodwrm.jpg",
+            "options": [
+                {
+                    "optionText": "A 1",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B 2",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 3",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 4",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 16
+        },
+        {
+            "questionText": "વૈકલ્પિક આકૃતિ શોધો જેમાં આકૃતિ (X) તેના ભાગ તરીકે છે.",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A A",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B B",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C C",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D D",
+                    "optImage": "",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 17
+        },
+        {
+            "questionText": "નીચે ની માહિતી  માટે યોગ્ય વેન આકૃતિ પસંદ કરો",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626087/ehwyqjh5qodttefyiajm.jpg",
+            "options": [
+                {
+                    "optionText": "A 1",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B 2",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 3",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 4",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 18
+        },
+        {
+            "questionText": "શ્રેણી 4M, 9K, 16I, 25G, .... માં આગળનો શબ્દ શોધો?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 36J",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 30J",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 36E",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D 30F",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 19
+        },
+        {
+            "questionText": "કેટલા cardboard ના બોક્સ, white નથી",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626118/ak5dnpo4vksxdml9l3f5.jpg",
+            "options": [
+                {
+                    "optionText": "A 6",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B 7",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 13",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 22",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 20
+        },
+        {
+            "questionText": "જો",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A  માતા",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B  બહેન",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "C  ભત્રીજી",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D  દાદી",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 21
+        },
+        {
+            "questionText": "નીચે આપેલ પાસા માં 2 ટપકા ની સામે કેટલા ટપકા આવશે?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626142/o2yczs2tixgeyl5qeefs.jpg",
+            "options": [
+                {
+                    "optionText": "A 3",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 4",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 5",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 6",
+                    "optImage": "",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 22
+        },
+        {
+            "questionText": ": 729 :: 32:? ",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 961",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B 1024",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 900",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 343",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 23
+        },
+        {
+            "questionText": "જો <br>A + B નો અર્થ એ B નો પુત્ર છે <br>A - B એટલે A એ B નો પતિ છે <br>A ∗ B એટલે A એ B ની બહેન છે <br>ઉપરોક્ત માહિતીનું અવલોકન કરીને, નીચેના પ્રશ્નનો તાર્કિક રીતે જવાબ આપો.  <br>નીચેનામાંથી કયું જણાવે છે કે M એ N નો પૌત્ર છે?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A  M + Q + N",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B  M + P ∗ O + N",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C  M ∗ S + N",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D  Q + N ∗ M",
+                    "optImage": "",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 24
+        },
+        {
+            "questionText": "અજય તરફ આંગળી ચીંધી વિજય બોલ્યો,\"તેના માતા ની માતા, તે મારા પુત્ર ની દાદી છે\". તો વિજય, અજયનો શું થઇ?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A  મામા",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B  કાકા",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C  નાના",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D  ભાઈ",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 25
+        },
+        {
+            "questionText": "એક ક્લબ ના ૩૦ સભ્ય ની સિંગલ્સ બેડમિંટન ટુર્નામેન્ટ રમાડવામાં આવી. જે સભ્ય હારે તે ટુર્નામેન્ટ ની બહાર કરવામાં આવે છે. કોઈ પણ મેચ ટાઈ થતી નથી. તો વિજેતા નક્કી કરવા માટે ઓછા માં ઓછી કેટલી મેચ રમાડવી જોઈએ?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 15",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 14",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 29",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D 61",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 26
+        },
+        {
+            "questionText": "આપેલ આકૃતિ ક્યાં વિકલ્પ ની આકૃતિઓ ને જોડી ને બનાવવામાં આવી છે?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626524/ynjgsyhwmziop0rflhoh.jpg",
+            "options": [
+                {
+                    "optionText": "A A",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626547/qpepvnkno0h4cuunblrl.jpg",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B B",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626563/oeimnqfqiiw5terh3l8a.jpg",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "C C",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626577/agcr1xusfjgu3ql0wipv.jpg",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D D",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626598/sr9gxtpz53m1yqbypvd1.jpg",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 27
+        },
+        {
+            "questionText": "આપેલ વર્ગો વચ્ચેના સંબંધને શ્રેષ્ઠ રીતે રજૂ કરતા વેન ડાયાગ્રામને ઓળખો ટેબલ, ખુરશી  અને ફર્નિચર",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A A",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626639/k0gw3wq2qhsritl4tghk.jpg",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B B",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626656/idxv3ojf1pskwfvnjxmr.jpg",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C C",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626668/q0nxblvkpertafxb0eqn.jpg",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D D",
+                    "optImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626678/rja1ppwa2a6scvs7gbmp.jpg",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 28
+        },
+        {
+            "questionText": "છોકરાઓની હરોળમાં , A જે ડાબી બાજુથી 10મા ક્રમે છે અને B જે જમણી બાજુથી 9મા ક્રમે છે તેમની સ્થિતિ અદલાબદલી કરવામાં આવે, તો A ડાબી બાજુથી 15મો બની જશે. તો હરોળમાં કેટલા છોકરાઓ છે?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 23",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B 24",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 25",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 20",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 29
+        },
+        {
+            "questionText": "નીચે માંથી કઈ આકૃતિ અલગ તારી આવે છે?",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708626710/d41tkfuwdupnego5suma.jpg",
+            "options": [
+                {
+                    "optionText": "A A",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B B",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C C",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D D",
+                    "optImage": "",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 30
+        },
+        {
+            "questionText": "નીચે આપેલ આકૃતિ અરીસા માં પ્રતિબિંબ તરીકે જોતા કેવી દેખાશે",
+            "testSections": "R",
+            "queImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708627105/rg6yae9a45ofprfjtxgp.jpg",
+            "specialImage": "https://res.cloudinary.com/dhbvs6zul/image/upload/v1708627121/gouhq1giblbyjijnsh0v.jpg",
+            "options": [
+                {
+                    "optionText": "A A",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B B",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C C",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D D",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 31
+        },
+        {
+            "questionText": "એક અનાનસની કિંમત રૂ. 7, જ્યારે એક તરબૂચની કિંમત રૂ. 5 છે. એક માણસ આ ફળો પર કુલ 38 રૂપિયા ખર્ચ કરે છે,તો  તેણે ખરીદેલા અનાનસની સંખ્યા કેટલી હતી?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 2",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 3",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 4",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D નક્કી ના કરી શકાય",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 32
+        },
+        {
+            "questionText": "નિખિલ કહે છે, \"જો તમે મારી ઉંમરના અંકોને ઉલટાવી દેશો, તો તમે જે નંબર મેળવશો તે સલીલની ઉંમર હશે. સલિલ મારા કરતા મોટો છે અને મારી અને સલિલની ઉંમરનો તફાવત અમારી ઉંમરના સરવાળાના અગિયારમા ભાગનો હશે. \" નિખિલની ઉંમર છે",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A. 23 વર્ષ",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B. 34 વર્ષ",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C. 45 વર્ષ",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "D. આમાંથી કોઈ નહીં",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 33
+        },
+        {
+            "questionText": "5 : 126 :: 8 : ?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 513",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B 512",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 511",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 514",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 34
+        },
+        {
+            "questionText": "સિરીઝ પૂર્ણ કરો 11, 24, 50, 102, ?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 205",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 204",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 208",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 206",
+                    "optImage": "",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 35
+        },
+        {
+            "questionText": "સિરીઝ પૂર્ણ કરો 99, 82,17, ?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 8",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "B 6",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 1",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 4",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 36
+        },
+        {
+            "questionText": "નીચેના દરેક પ્રશ્નોમાં બે વિધાનો આપવામાં આવ્યા છે અને આ નિવેદનો પછી બે નિષ્કર્ષ (1) અને (2) ક્રમાંકિત છે. આપેલ બે વિધાનો સામાન્ય રીતે જાણીતા તથ્યોથી અલગ હોય તેમ લાગે તો પણ તમારે સાચા હોવા જોઈએ. તારણો વાંચો અને પછી નક્કી કરો કે સામાન્ય રીતે જાણીતી હકીકતોને અવગણીને આપેલ બે નિવેદનોમાંથી કયું તાર્કિક રીતે અનુસરે છે. <br>જવાબ આપો: <br> (A) જો માત્ર (1) નિષ્કર્ષ અનુસરે છે <br> (B) જો માત્ર (2) નિષ્કર્ષ અનુસરે છે <br> (C) જો ન તો (1) કે (2) અનુસરે છે અને <br> (D) જો બંને (1) અને (2) અનુસરે છે. <br> વિધાનો : કેટલીક કીડીઓ પોપટ છે. બધા પોપટ સફરજન છે. <br> નિસ્કર્ષ : <br> બધા સફરજન પોપટ છે. <br> કેટલીક કીડીઓ સફરજન છે. <br>",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "(A) જો માત્ર (1) નિષ્કર્ષ અનુસરે છે",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "(B) જો માત્ર (2) નિષ્કર્ષ અનુસરે છે",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "(C) જો ન તો (1) કે (2) અનુસરે છે અને",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "(D) જો બંને (1) અને (2) અનુસરે છે.",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 37
+        },
+        {
+            "questionText": "નીચેના દરેક પ્રશ્નોમાં બે વિધાનો આપવામાં આવ્યા છે અને આ નિવેદનો પછી બે નિષ્કર્ષ (1) અને (2) ક્રમાંકિત છે. આપેલ બે વિધાનો સામાન્ય રીતે જાણીતા તથ્યોથી અલગ હોય તેમ લાગે તો પણ તમારે સાચા હોવા જોઈએ. તારણો વાંચો અને પછી નક્કી કરો કે સામાન્ય રીતે જાણીતી હકીકતોને અવગણીને આપેલ બે નિવેદનોમાંથી કયું તાર્કિક રીતે અનુસરે છે. <br>જવાબ આપો: <br> (A) જો માત્ર (1) નિષ્કર્ષ અનુસરે છે<br> (B) જો માત્ર (2) નિષ્કર્ષ અનુસરે છે<br> (C) જો ન તો (1) કે (2) અનુસરે છે અને<br> (D) જો બંને (1) અને (2) અનુસરે છે<br> વિધાનો : કેટલાક કૂતરા ચામાચીડિયા છે. કેટલાક ચામાચીડિયા બિલાડીઓ છે.<br> નિસ્કર્ષ :<br> કેટલાક કૂતરા બિલાડીઓ છે.<br> બધી  બિલાડીઓ કૂતરા છે.<br>",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "(A) જો માત્ર (1) નિષ્કર્ષ અનુસરે છે",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "(B) જો માત્ર (2) નિષ્કર્ષ અનુસરે છે",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "(C) જો ન તો (1) કે (2) અનુસરે છે અને",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "(D) જો બંને (1) અને (2) અનુસરે છે",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 38
+        },
+        {
+            "questionText": "નંબર 200 થી 500 સુધી લખતા અંક  4 કેટલી વખત આવશે ?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 60",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 40",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "C 140",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 160",
+                    "optImage": "",
+                    "isCorrect": true
+                }
+            ],
+            "questionIndex": 39
+        },
+        {
+            "questionText": "જો A = સરવાળો, B = બાદબાકી, C = ગુણાકાર,  D= ભાગાકાર, તો 14 A 12 D 4 B 2 C 3 = ?",
+            "testSections": "R",
+            "queImage": "",
+            "options": [
+                {
+                    "optionText": "A 12",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "B 11",
+                    "optImage": "",
+                    "isCorrect": true
+                },
+                {
+                    "optionText": "C 15",
+                    "optImage": "",
+                    "isCorrect": false
+                },
+                {
+                    "optionText": "D 54",
+                    "optImage": "",
+                    "isCorrect": false
+                }
+            ],
+            "questionIndex": 40
+        },      
+        {
             "questionText": "અફવા એક વ્યક્તિથી અન્ય બે વ્યક્તિ સુધી પહોંચાડવામાં પાંચ મિનિટ લાગે છે. જો આવું સતત ચાલ્યા કરે તો 1 અફવાહ 1 વ્યક્તિ થી શરુ થઇને 729 વ્યક્તિઓ સુધી ફેલાવવામાં કેટલી મિનિટ લાગે છે તે શોધો?",
             "testSections": "QA",
             "options": [
@@ -691,10 +1774,9 @@
       ],
       "questionIndex": 30
     },
-    // English
     {
         "questionText": "read the following passage and answer the question that follows. Erosion of America's farmland by wind and water has been a problem since settlers first put the prairies and grasslands under the Plow in the nineteenth century. By the 1930s, more than 282 million acres of farmland were damaged by erosion. After 40 years of conservation efforts, soil erosion has accelerated due to new demands placed on the land by heavy crop production. In the years ahead, soil erosion and the pollution problems it causes are likely to replace petroleum scarcity as the nation's most critical natural resource problem. It is pointed out in the reading that in America ___.",
-        "testSections": "QA",
+        "testSections": "E",
         "options": [
             {
                 "optionText": "petroleum is causing heavy soil erosion and pollution problems",
@@ -717,7 +1799,7 @@
     },
     {
         "questionText": "which of the following is not a synonym of the word 'Stoic'?",
-        "testSections": "QA",
+        "testSections": "E",
         "options": [
             {
                 "optionText": "passionate",
@@ -740,7 +1822,7 @@
     },
     {
         "questionText": "Which of the following is antonym of the word 'Whimsical'?",
-        "testSections": "QA",
+        "testSections": "E",
         "options": [
             {
                 "optionText": "stable",
@@ -763,7 +1845,7 @@
     },
     {
         "questionText": "Choose an option, which can be substituted for a given sentence out of given options: A person who is intolerant towards others",
-        "testSections": "QA",
+        "testSections": "E",
         "options": [
             {
                 "optionText": "Bigot",
@@ -786,7 +1868,7 @@
     },
     {
         "questionText": "In the following narration mcq, a sentence has been given in direct/indirect form. Out of the four alternatives choose the one which best expresses the same sentence in indirect/direct form. “What are you doing here?”, she asked me.",
-        "testSections": "QA",
+        "testSections": "E",
         "options": [
             {
                 "optionText": "She asked what I was doing here.",
@@ -809,7 +1891,7 @@
     },
     {
         "questionText": "Your room is so untidy! Please _______ the clothes and put them in the washing machine.",
-        "testSections": "QA",
+        "testSections": "E",
         "options": [
             {
                 "optionText": "Stand up",
@@ -832,7 +1914,7 @@
     },
     {
       "questionText": "Your room is so untidy! Please _______ the clothes and put them in the washing machine.",
-      "testSections": "QA",
+      "testSections": "E",
       "options": [
           {
               "optionText": "Stand up",
@@ -855,7 +1937,7 @@
   },
   {
       "questionText": "two friends quarreled with each other ________ a trifle.",
-      "testSections": "QA",
+      "testSections": "E",
       "options": [
           {
               "optionText": "for",
@@ -878,7 +1960,7 @@
   },
   {
       "questionText": "Change Active Voice into Passive Voice: 'The people were helping the wounded woman.'",
-      "testSections": "QA",
+      "testSections": "E",
       "options": [
           {
               "optionText": "The wounded woman was being helped by the people.",
@@ -901,7 +1983,7 @@
   },
   {
       "questionText": "Go through the sentences provided below and identify the type of tense: 'The sick child has been sleeping for three hours.'",
-      "testSections": "QA",
+      "testSections": "E",
       "options": [
           {
               "optionText": "Present Perfect Tense",
@@ -924,7 +2006,7 @@
   },
   {
       "questionText": "Fill in the blank with the appropriate article. King Samudragupta was ___ just king.",
-      "testSections": "QA",
+      "testSections": "E",
       "options": [
           {
               "optionText": "an",
@@ -947,7 +2029,7 @@
   },
   {
       "questionText": "Fill in the blank by choosing the most appropriate adverb from the options. Sanvi ran to her mother ____.",
-      "testSections": "QA",
+      "testSections": "E",
       "options": [
           {
               "optionText": "Quickly",
@@ -970,7 +2052,7 @@
   },
   {
       "questionText": "You are required to rearrange these parts, which are labelled P, Q, R and S to produce the correct sentence.",
-      "testSections": "QA",
+      "testSections": "E",
       "options": [
           {
               "optionText": "RPSQ",
@@ -993,7 +2075,7 @@
   },
   {
     "questionText": "Translate the following sentence from English to Gujarati. 'In case someone asks you something you do not know, see to it that you do not give them the wrong information.'",
-    "testSections": "QA",
+    "testSections": "E",
     "options": [
         {
             "optionText": "જો કોઈ વ્યક્તિ તમને ખબર હોય તેવું કંઈક પૂછે, તો તમે તેને ખોટી માહિતી ન આપો તેનું ધ્યાન રાખો.",
@@ -1016,7 +2098,7 @@
 },
 {
     "questionText": "Read the following sentence and select the correct form of the verb. __ he not moved to a new city he wouldn’t be sick.",
-    "testSections": "QA",
+    "testSections": "E",
     "options": [
         {
             "optionText": "Had",
@@ -1037,7 +2119,6 @@
     ],
     "questionIndex": 15
 },
-        /// Gujarati
       {
         "questionText": " નીચે વર્ણવેલા છે તેમાંથી કયા/ કઈ રૂઢિપ્રયોગનો અને અર્થનું જોડકું સાચું નથી? ",
         "testSections": "G",
