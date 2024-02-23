@@ -59,7 +59,6 @@ common.submitTestAndCalulateResult = async ({ userId, testId }, submitedAnswers)
     await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true, score });
     return score
   } else {
-    const testResults = await TestResults.findOne({ userId, testId }).lean()
     if (!testResults) return 0
     if (testResults.isCompleted) return testResults.score
 
