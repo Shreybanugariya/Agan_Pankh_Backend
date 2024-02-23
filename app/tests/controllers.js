@@ -23,6 +23,7 @@ controllers.getTestLists = async (req, res) => {
                 t.score = checkResults.score
             } else if (user.hasPreminum && t.testIndex === 0) t.isLocked = false
             else if (user.currentTestIndex === t.testIndex && t.testIndex !== 0) t.isLocked = false 
+            if (!t.readyToShow) t.isLocked = true
         }
         return res.reply(message.success('Test Fetch'), { data: tests })
     } catch (error) {
@@ -83,6 +84,7 @@ controllers.startTest = async (req, res) => {
         if (!req.user.hasPreminum) return res.status(400).json({ error: 'Payment not completed. Please buy the plan to continue' });
         const test = await Tests.findById(testId).lean()
         if (!test) return res.reply(message.not_found('Test'))
+        if (!test.readyToShow) return res.status(404).json({ error: 'This test wil be available soon' });
         if ((await checkPreviousTestCleared( userId, test.testIndex ))) return res.reply(message.invalid_req('Previous Test not cleared, please complete previous test'))
 
         const checkGiven = await TestResult.findOne({ userId, testId }, { _id: 1, score: 1 }).lean(test.testIndex)

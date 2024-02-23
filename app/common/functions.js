@@ -52,6 +52,7 @@ const calculateScore = (questions, answers) => {
 common.submitTestAndCalulateResult = async ({ userId, testId }, submitedAnswers) => {
   const test = await Tests.findById(testId);
   const testResults = await TestResults.findOne({ userId, testId }).lean()
+  await TestResults.updateOne({ _id: testResults._id }, { isCompleted: true });
   await User.updateOne({ _id: userId }, { currentTestIndex: test.testIndex + 1 })
   if (submitedAnswers && submitedAnswers.length) {
     const score = calculateScore(test.questions, submitedAnswers)
