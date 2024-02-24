@@ -17,4 +17,10 @@ _.pick = function (obj, array) {
     }, {});
 };
 
+_.checkPromo = (code) =>{
+    const codes = ['SPCF2024', 'KDVS2024', 'SD2024']
+    if (codes.includes(code)) return true
+    return false
+}
+
 module.exports = _
