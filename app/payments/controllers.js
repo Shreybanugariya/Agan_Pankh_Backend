@@ -47,7 +47,7 @@ controllers.paymentCapture = async (req, res) => {
     const digest = data.digest('hex')
     const { payload } = req.body
     const obj = payload.payment.entity
-    console.log(obj)
+    console.log(payload)
     if (digest === req.headers['x-razorpay-signature']) {
         const googleId = obj.notes.googleId
         await User.updateOne({ googleId }, { hasPreminum: true })
@@ -69,7 +69,7 @@ controllers.createUPILink = async (req, res) => {
             key_secret: RAZORPAY_KEY_SECRET,
         })
         let amount = 9900
-        if (promoCode) amount = 4900
+        if (promoCode) amount = 100
         const upiLinkOptions = {
             amount,
             currency: "INR",
