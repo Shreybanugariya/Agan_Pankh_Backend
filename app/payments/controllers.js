@@ -77,7 +77,7 @@ controllers.createUPILink = async (req, res) => {
             key_secret: RAZORPAY_KEY_SECRET,
         })
         let amount = 9900
-        if (promoCode) amount = 100
+        if (promoCode) amount = 4900
         const upiLinkOptions = {
             amount,
             currency: "INR",
