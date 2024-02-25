@@ -47,6 +47,7 @@ controllers.paymentCapture = async (req, res) => {
     const digest = data.digest('hex')
     const { payload } = req.body
     const obj = payload.payment.entity
+    console.log(obj)
     if (digest === req.headers['x-razorpay-signature']) {
         const googleId = obj.notes.googleId
         await User.updateOne({ googleId }, { hasPreminum: true })
