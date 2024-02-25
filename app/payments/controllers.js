@@ -42,19 +42,27 @@ controllers.createOrder = async (req, res) => {
 }
 
 controllers.paymentCapture = async (req, res) => {
-    const data = crypto.createHmac('sha256', SECRET_KEY)
-    data.update(JSON.stringify(req.body))
-    const digest = data.digest('hex')
-    const { payload } = req.body
-    const obj = payload.payment.entity
-    console.log(payload)
-    if (digest === req.headers['x-razorpay-signature']) {
-        const googleId = obj.notes.googleId
-        await User.updateOne({ googleId }, { hasPreminum: true })
-        res.json({status: 'ok'})
-    } else {
-        res.status(400).send('Invalid signature');
-    }
+    try {
+        const data = crypto.createHmac('sha256', SECRET_KEY)
+        data.update(JSON.stringify(req.body))
+        const digest = data.digest('hex')
+        const { payload } = req.body
+        const obj = payload.payment.entity
+        if (!payload.payment.entity.captured) return res.json({status: 'ok'})
+        else if (payload.payment.entity.captured && payload.payment.entity.status === 'captured') {
+            if (digest === req.headers['x-razorpay-signature']) {
+                const googleId = obj.notes.googleId
+                await User.updateOne({ googleId }, { hasPreminum: true })
+                res.json({status: 'ok'})
+            }
+        } else {
+            res.status(400).send('Invalid signature');
+        }
+    } catch (error) {
+        console.log(error)
+        return res.status(400).send('Not able to capture payment');
+     }
+    
 }
 
 controllers.createUPILink = async (req, res) => {
