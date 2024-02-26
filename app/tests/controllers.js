@@ -37,7 +37,7 @@ controllers.accessTestQuestions = async (req, res) => {
         if (!req.params.id) return res.status(419).json({ message: 'Id is required'})
         const userId = req.user._id
         const testId = req.params.id
-        if (!req.user.hasPreminum) return res.status(400).json({ success: false, error: 'Payment not completed. Please buy the plan to continue' });
+        if (!req.user.hasPreminum) return res.status(400).json({ success: false, error: 'પ્રીમિયમ ખરીદવામાં આવતું નથી. તમામ ટેસ્ટ પેપર એક્સેસ કરવા માટે કૃપા કરીને પ્રીમિયમ ખરીદો' });
         const testSession = await TestSession.findOne({ userId, testId }, { startTime: 1, endTime: 1 })
         if (!testSession) return res.status(400).json({ success: false, error: 'Test Questions cannot be accessed without Starting the Test' });
 
@@ -81,11 +81,11 @@ controllers.startTest = async (req, res) => {
         const userId = req.user._id
         //Validations
         if (userId.toString() !== req.user._id.toString()) return res.reply(message.invalid_req('UserID miss match'))
-        if (!req.user.hasPreminum) return res.status(400).json({ error: 'Payment not completed. Please buy the plan to continue' });
+        if (!req.user.hasPreminum) return res.status(400).json({ error: 'પ્રીમિયમ પ્લાન હજુ ખરીદાયો નથી. કૃપા કરીને તમામ ટેસ્ટ ઍક્સેસ કરવા માટે પ્રીમિયમ પ્લાન ખરીદો' });
         const test = await Tests.findById(testId).lean()
         if (!test) return res.reply(message.not_found('Test'))
-        if (!test.readyToShow) return res.status(404).json({ error: 'This test wil be available soon' });
-        if ((await checkPreviousTestCleared( userId, test.testIndex ))) return res.reply(message.invalid_req('Previous Test not cleared, please complete previous test'))
+        if (!test.readyToShow) return res.status(404).json({ error: 'આ ટેસ્ટ ટૂંક સમયમાં ઉપલબ્ધ થશે' });
+        if ((await checkPreviousTestCleared( userId, test.testIndex ))) return res.reply(message.invalid_req('અગાઉની ટેસ્ટ ક્લિયર થઈ નથી, કૃપા કરીને અગાઉની ટેસ્ટ પૂર્ણ કરો'))
 
         const checkGiven = await TestResult.findOne({ userId, testId }, { _id: 1, score: 1 }).lean(test.testIndex)
         if (checkGiven) return res.reply(message.no_prefix('Test already conducted'), { score: checkGiven.score })
