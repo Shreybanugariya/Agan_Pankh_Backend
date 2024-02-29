@@ -9,8 +9,8 @@ const authenticateUser = async (req, res, next) => {
     try {
       let searchParam = {}
       const decoded = jwt.verify(token, JWT_SECRET_KEY);
-      if (decoded.googleId) searchParam.googleId = decoded.googleId
-      else searchParam.email = decoded.email
+      if (decoded.googleId) searchParam['googleId'] = decoded.googleId
+      else searchParam['email'] = decoded.email
       const user = await User.findOne({ searchParam });
       if (!user) return res.status(401).json({ error: 'Unauthorized - Invalid user' });
       if (!user.isActive) return res.status(401).json({ error: 'User account Deleted' });
