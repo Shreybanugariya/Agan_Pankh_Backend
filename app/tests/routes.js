@@ -9,14 +9,14 @@ router.post('/test-session/start/:id', authenticateUser, controllers.startTest)
 router.post('/post-answer/:id', authenticateUser, controllers.addAnswerToTest)
 
 // Admin APIs
-router.post('/admin/add-test', adminAuthMiddleware, validators.addTest, controllers.addTest)
-router.put('/admin/update-test/:id', adminAuthMiddleware, validators.addTest, controllers.updateTest)
-router.post('/admin/add-question/:id', adminAuthMiddleware, validators.addQuestionsToTest, controllers.addQuestionsToTest)
+router.post('/admin/add-test', validators.addTest, controllers.addTest)
+router.put('/admin/update-test/:id', validators.addTest, controllers.updateTest)
+router.post('/admin/add-question/:id', validators.addQuestionsToTest, controllers.addQuestionsToTest)
 router.put('/admin/update-question/:id', validators.updateQuestion, controllers.updateQuestion)
-router.get('/admin/publish-test/:id', adminAuthMiddleware, validators.addQuestionsToTest, controllers.publishTest)
-router.post('/admin/add-image', adminAuthMiddleware, validators.addImage, controllers.addImagesToTest)
-router.get('/admin/get-image/:id', adminAuthMiddleware, controllers.getTestImages)
-router.put('/admin/update-image/:id', adminAuthMiddleware, controllers.updateImage)
+router.get('/admin/publish-test/:id', validators.addQuestionsToTest, controllers.publishTest)
+router.post('/admin/add-image', validators.addImage, controllers.addImagesToTest)
+router.get('/admin/get-image/:id', controllers.getTestImages)
+router.put('/admin/update-image/:id', controllers.updateImage)
 
 
 module.exports = router;
