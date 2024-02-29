@@ -7,8 +7,11 @@ const authenticateUser = async (req, res, next) => {
     if (!token) return res.status(200).json({ error: 'Unauthorized - No token provided' });
   
     try {
+      let searchParam = {}
       const decoded = jwt.verify(token, JWT_SECRET_KEY);
-      const user = await User.findOne({ googleId: decoded.googleId });
+      if (decoded.googleId) searchParam.googleId = decoded.googleId
+      else searchParam.email = decoded.email
+      const user = await User.findOne({ searchParam });
       if (!user) return res.status(401).json({ error: 'Unauthorized - Invalid user' });
       if (!user.isActive) return res.status(401).json({ error: 'User account Deleted' });
       req.user = user
@@ -26,6 +29,9 @@ const adminAuthMiddleware = async (req, res) => {
     const decoded = jwt.verify(token, JWT_SECRET_KEY);
     const { email } = decoded
     if (!email || email !== 'admin@aganpankh.admin.com') return res.status(401).json({ error: 'Unauthorized' });
+    const user = await User.findOne({ email });
+    if (!user) return res.status(401).json({ error: 'Unauthorized - Invalid user' });
+    if (!user.isAdmin) return res.status(401).json({ error: 'Access Denied' });
     next();
   } catch (error) {
     return res.status(401).json({ error: 'Unauthorized - Invalid token' });

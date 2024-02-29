@@ -67,7 +67,7 @@ controllers.paymentCapture = async (req, res) => {
 
 controllers.createUPILink = async (req, res) => {
     try {
-        const { hasPreminum, city, contactNo, username, email, googleId } = req.user
+        const { _id, hasPreminum, city, contactNo, username, email, googleId } = req.user
         const { promoCode } = req.body
         if (hasPreminum) return res.reply(message.no_prefix('You already have hasPreminum'))
         if (!city || !contactNo) return res.reply(message.no_prefix('City or Contact No not provided. Please update user details'))
@@ -77,7 +77,11 @@ controllers.createUPILink = async (req, res) => {
             key_secret: RAZORPAY_KEY_SECRET,
         })
         let amount = 9900
-        if (promoCode) amount = 4900
+
+        if (promoCode) {
+            await User.updateOne({ _id }, { promoCode })
+            amount = 4900
+        }
         const upiLinkOptions = {
             amount,
             currency: "INR",
@@ -113,10 +117,7 @@ controllers.checkPromo = async (req, res) => {
         if (!promoCode) return res.reply(message.required_field('Promo Code'));
         const { _id } = req.user
         const checkCode = _.checkPromo(promoCode)
-        if (checkCode) {
-            await User.updateOne({ _id }, { promoCode })
-            return res.status(200).json({ message: 'Applied Success', code: { promoCode, price: 49 } })
-        }
+        if (checkCode) return res.status(200).json({ message: 'Applied Success', code: { promoCode, price: 49 } })
         return res.status(400).json({ message: 'Invalid Promo Code' })
     } catch (error) {
         console.log(error)

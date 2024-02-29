@@ -1,6 +1,8 @@
 const User = require('./model')
 const { verifyGoogleToken } = require('../common/functions')
 const jwt = require('jsonwebtoken');
+const TestResult = require('../testresults/model');
+const TestSessions = require('../tests/testSession.model');
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
 
 const controllers = {}
@@ -67,6 +69,49 @@ controllers.getLoggedInUser = async (req, res) => {
         return res.reply(message.success('Logged In User details fetch'), req.user)
     } catch (error) {
         return res.status(404).json({ message: 'Somethings went wrong while fetching the Loggedin User' })
+    }
+}
+
+controllers.adminGetUsers = async (req, res) => {
+    try {
+        if (!req.user.isAdmin) return res.status(400).json({ message: 'Access Denied' })
+        const users = await User.find({}).lean()
+        const totalUsers = users.length
+        const subscribedUsers = users.filter((user) => user.hasPreminum )
+        return res.status(200).json({ message: 'Users Fetch', data: { totalUsers, subscribedUsers } })
+    } catch (error) {
+        console.error(error);
+        return res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
+
+controllers.adminDeleteUser = async (req, res) => {
+    try {
+        const { id } = req.params
+        const user = await User.findById(req.params.id, { _id: 1 }).lean()
+        if (!user) return res.status(400).json({ message: 'User not Found' })
+        const testSessions = await TestSessions.find({ userId: id })
+        if (!testSessions) return res.status(400).json({ message: 'User has a test going on' })
+        await TestResult.deleteMany({ userId: id })
+        await User.deleteOne({ _id: req.params.id })
+        return res.status(200).json({ message: 'User Deleted Successfully' })
+    } catch (error) {
+        console.error(error);
+        return res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
+
+controllers.adminAddUsers = async (req, res) => {
+    try {
+        if (!req.user.isAdmin) return res.status(400).json({ message: 'Access Denied' })
+        req.body = _.pick(req.body, ['username', 'email', 'contactNo', 'city', 'hasPreminum', 'promoCode'])
+        const authToken = jwt.sign({ email: email }, JWT_SECRET_KEY, { expiresIn: '300d' })
+        req.body.authToken = authToken
+        const user = await User.create(req.body)
+        return res.status(200).json({ message: 'User Added Successfully', data: user })
+    } catch (error) {
+        console.error(error);
+        return res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
 
