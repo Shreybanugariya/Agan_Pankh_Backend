@@ -71,4 +71,18 @@ common.submitTestAndCalulateResult = async ({ userId, testId }, submitedAnswers)
 
 }
 
+common.reCalculateResults = async () => {
+  try {
+    const testResults = await TestResults.find({ isCompleted: true }).lean()
+    const test = await Tests.findById('65c9aca9a72789e6c210ed19');
+    for (const r of testResults) {
+      const score = calculateScore(test.questions, r.answers)
+      await TestResults.updateOne({ _id: r._id }, { score });
+      console.log('Before', r.score, 'After', score, 'of Ids', r._id);
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = common
