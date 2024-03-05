@@ -64,6 +64,8 @@ controllers.updateUser = async (req, res) => {
     }
 }
 
+// ******************** Admin  *************************
+
 controllers.getLoggedInUser = async (req, res) => {
     try {
         return res.reply(message.success('Logged In User details fetch'), req.user)
@@ -115,4 +117,16 @@ controllers.adminAddUsers = async (req, res) => {
     }
 }
 
+controllers.adminLogin = async (req, res) => {
+    try {
+        req.body = _.pick(req.body, ['email', 'password'])
+        const user = await User.findOne({ email: req.body.email })
+        if (!user) return res.status(400).json({ message: 'User not found' })
+        
+        if (!isMatch) return res.status(400).json({ message: 'Invalid Password' })
+        const authToken = jwt.sign({ email: user.email }, JWT_SECRET_KEY, { expiresIn: '300d' })
+        user.authToken = authToken
+        return res.status(200).json({ message: 'User Login Success', data: user })
+    }
+}
 module.exports = controllers

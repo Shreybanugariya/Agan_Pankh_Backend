@@ -9,6 +9,7 @@ router.post('/test-session/start/:id', authenticateUser, controllers.startTest)
 router.post('/post-answer/:id', authenticateUser, controllers.addAnswerToTest)
 
 // Admin APIs
+router.get('/admin/get-test',controllers.getTestsForAdmin)
 router.post('/admin/add-test', validators.addTest, controllers.addTest)
 router.put('/admin/update-test/:id', validators.addTest, controllers.updateTest)
 router.post('/admin/add-question/:id', validators.addQuestionsToTest, controllers.addQuestionsToTest)

@@ -168,6 +168,8 @@ controllers.addAnswerToTest = async (req, res) => {
     }
 }
 
+
+// ********************* Admin APIs ****************************
 controllers.addTest = async (req, res) => {
     try {
         const { testName = "New Test", totalQuestions = 100, duration = 60 } = req.body;
@@ -194,7 +196,6 @@ controllers.updateTest = async (req, res) => {
     }
 }
 
-// Add Questions to Test
 controllers.addQuestionsToTest = async (req, res) => {
     try {
         const { id } = req.params
@@ -266,10 +267,17 @@ controllers.publishTest = async (req, res) => {
         res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
-// API to add Images to Test
+
 controllers.addImagesToTest = async (req, res) => {
     try {
-        const testImage = await TestImage.create(req.body)
+        const { images, testId } = req.body
+        let payload = []
+        if (images.length) {
+            for (const image of images) {
+                payload.push({ testId, imageUrl: image })
+            }
+        }
+        const testImage = await TestImage.create(payload)
         if (testImage) return res.status(200).json({ message: 'Image Added Successfully' })
         return res.status(400).json({ message: 'There is an error creating the Image' })
     } catch (error) {
@@ -292,5 +300,16 @@ controllers.getTestImages = async (req, res) => {
         res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
-// API to get Users' Info (Logged in, Subscribed, Test Givnen)
+
+controllers.getTestsForAdmin = async (req, res) => {
+    try {
+        const { limit = 30, offset=0 } = req.query
+        const tests = await Tests.find({}).limit(limit).skip(offset).lean()
+        if (!tests.length) return res.status(404).json({ message: 'Tests not found' })
+        return res.status(200).json({ tests })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
 module.exports = controllers
