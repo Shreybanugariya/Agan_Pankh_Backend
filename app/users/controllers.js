@@ -127,6 +127,9 @@ controllers.adminLogin = async (req, res) => {
         const authToken = jwt.sign({ email: user.email }, JWT_SECRET_KEY, { expiresIn: '300d' })
         user.authToken = authToken
         return res.status(200).json({ message: 'User Login Success', data: user })
+    } catch (error) {
+        console.error(error);
+        return res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
 module.exports = controllers

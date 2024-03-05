@@ -303,8 +303,8 @@ controllers.getTestImages = async (req, res) => {
 
 controllers.getTestsForAdmin = async (req, res) => {
     try {
-        const { limit = 30, offset=0 } = req.query
-        const tests = await Tests.find({}).limit(limit).skip(offset).lean()
+        const { limit = 30, offset = 0 } = req.query
+        const tests = await Tests.find({}, { questions: 0 }).sort({ testIndex: 1 }).limit(limit).skip(offset).lean()
         if (!tests.length) return res.status(404).json({ message: 'Tests not found' })
         return res.status(200).json({ tests })
     } catch (error) {
