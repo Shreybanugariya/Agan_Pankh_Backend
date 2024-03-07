@@ -21,7 +21,8 @@ const testSchema = new mongoose.Schema({
     totalQuestions: { type: Number, default: 100 },
     duration: { type: Number, default: 60 }, // In Minutes
     testIndex: { type: Number, enum: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], required: true, unique: true },
-    readyToShow: { type: Boolean, default: true } // ONly true for tests whos questions array length is equal to its totalQuestions Length
+    readyToShow: { type: Boolean, default: true }, // ONly true for tests whos questions array length is equal to its totalQuestions Length
+    testReleaseDate: { type: Date }
 });
 
 const Tests = mongoose.model('Tests', testSchema);

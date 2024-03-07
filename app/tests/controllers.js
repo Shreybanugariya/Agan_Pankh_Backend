@@ -9,7 +9,7 @@ const controllers = {}
 
 controllers.getTestLists = async (req, res) => {
     try {
-        const tests = await Tests.find({}, { testName: 1, totalQuestions: 1, duration: 1, testIndex : 1, readyToShow: 1 }).sort({ testIndex: 1 }).lean()
+        const tests = await Tests.find({}, { testName: 1, totalQuestions: 1, duration: 1, testIndex : 1, readyToShow: 1, testReleaseDate: 1 }).sort({ testIndex: 1 }).lean()
         if (!tests.length) return res.status(400).json({ message: 'There was an error Loading the test, Please try again later.' })
         const user = req.user
         for (const t of tests) {
@@ -24,6 +24,10 @@ controllers.getTestLists = async (req, res) => {
             } else if (user.hasPreminum && t.testIndex === 0) t.isLocked = false
             else if (user.currentTestIndex === t.testIndex && t.testIndex !== 0) t.isLocked = false 
             if (!t.readyToShow) t.isLocked = true
+            if (['hirenjogi.82@gmail.com', 'tejbanugariya@gmail.com', 'shreybanugariya@gmail.com', 'kandarpdangi@gmail.com'].includes(req.user.email) && t.testIndex == 1) {
+                t.isLocked = false
+                t.readyToShow = false
+            }
         }
         return res.reply(message.success('Test Fetch'), { data: tests })
     } catch (error) {
