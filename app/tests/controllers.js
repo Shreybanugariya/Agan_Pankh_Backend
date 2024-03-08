@@ -88,7 +88,11 @@ controllers.startTest = async (req, res) => {
         if (!req.user.hasPreminum) return res.status(400).json({ error: 'પ્રીમિયમ પ્લાન હજુ ખરીદાયો નથી. કૃપા કરીને તમામ ટેસ્ટ ઍક્સેસ કરવા માટે પ્રીમિયમ પ્લાન ખરીદો' });
         const test = await Tests.findById(testId).lean()
         if (!test) return res.reply(message.not_found('Test'))
-        if (!test.readyToShow) return res.status(404).json({ error: 'આ ટેસ્ટ ટૂંક સમયમાં ઉપલબ્ધ થશે' });
+        
+        if (!test.readyToShow) {
+            if (['hirenjogi.82@gmail.com', 'tejbanugariya@gmail.com', 'shreybanugariya@gmail.com', 'kandarpdangi@gmail.com'].includes(req.user.email) && t.testIndex == 1) {}
+            else return res.status(404).json({ error: 'આ ટેસ્ટ ટૂંક સમયમાં ઉપલબ્ધ થશે' });
+        }
         if ((await checkPreviousTestCleared( userId, test.testIndex ))) return res.reply(message.invalid_req('અગાઉની ટેસ્ટ ક્લિયર થઈ નથી, કૃપા કરીને અગાઉની ટેસ્ટ પૂર્ણ કરો'))
 
         const checkGiven = await TestResult.findOne({ userId, testId }, { _id: 1, score: 1 }).lean(test.testIndex)
