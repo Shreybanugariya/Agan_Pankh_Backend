@@ -90,7 +90,7 @@ controllers.startTest = async (req, res) => {
         if (!test) return res.reply(message.not_found('Test'))
         
         if (!test.readyToShow) {
-            if (['hirenjogi.82@gmail.com', 'tejbanugariya@gmail.com', 'shreybanugariya@gmail.com', 'kandarpdangi@gmail.com'].includes(req.user.email) && t.testIndex == 1) {}
+            if (['hirenjogi.82@gmail.com', 'tejbanugariya@gmail.com', 'shreybanugariya@gmail.com', 'kandarpdangi@gmail.com'].includes(req.user.email)) {}
             else return res.status(404).json({ error: 'આ ટેસ્ટ ટૂંક સમયમાં ઉપલબ્ધ થશે' });
         }
         if ((await checkPreviousTestCleared( userId, test.testIndex ))) return res.reply(message.invalid_req('અગાઉની ટેસ્ટ ક્લિયર થઈ નથી, કૃપા કરીને અગાઉની ટેસ્ટ પૂર્ણ કરો'))
