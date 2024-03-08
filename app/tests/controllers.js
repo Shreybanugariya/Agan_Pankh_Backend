@@ -26,7 +26,7 @@ controllers.getTestLists = async (req, res) => {
             if (!t.readyToShow) t.isLocked = true
             if (['hirenjogi.82@gmail.com', 'tejbanugariya@gmail.com', 'shreybanugariya@gmail.com', 'kandarpdangi@gmail.com'].includes(req.user.email) && t.testIndex == 1) {
                 t.isLocked = false
-                t.readyToShow = false
+                t.readyToShow = true
             }
         }
         return res.reply(message.success('Test Fetch'), { data: tests })
