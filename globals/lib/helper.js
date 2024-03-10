@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
 const _ = {}
 
 _.clone = function (data = {}) {
@@ -22,5 +24,9 @@ _.checkPromo = (code) =>{
     if (codes.includes(code)) return true
     return false
 }
+
+_.encryptPassword = function (password) {
+    return crypto.createHmac('sha256', JWT_SECRET_KEY).update(password).digest('hex');
+};
 
 module.exports = _

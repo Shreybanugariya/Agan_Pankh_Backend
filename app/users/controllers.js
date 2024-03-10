@@ -120,12 +120,14 @@ controllers.adminAddUsers = async (req, res) => {
 controllers.adminLogin = async (req, res) => {
     try {
         req.body = _.pick(req.body, ['email', 'password'])
+        req.body.password = _.encryptPassword(req.body.password);
         const user = await User.findOne({ email: req.body.email })
         if (!user) return res.status(400).json({ message: 'User not found' })
         if (!user.isAdmin) return res.status(401).json({ message: 'In Valid Access' })
+        if (user.password !== req.body.password) return res.status(401).json({ message: 'In Valid Password' })
         const authToken = jwt.sign({ email: user.email }, JWT_SECRET_KEY, { expiresIn: '300d' })
         user.authToken = authToken
-        return res.status(200).json({ message: 'User Login Success', data: user })
+        return res.status(200).json({ message: 'Admin Login Success', data: user })
     } catch (error) {
         console.error(error);
         return res.status(400).json({ success: false, error: 'Something Went Wrong' });
