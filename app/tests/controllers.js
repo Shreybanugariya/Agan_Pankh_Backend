@@ -231,7 +231,7 @@ controllers.addQuestionsToTest = async (req, res) => {
 controllers.updateQuestion = async (req, res) => {
     try {
         const { id } = req.params
-        const { question } = req.body
+        const question = req.body
         const testUpdate = await Tests.findOneAndUpdate({ _id: id, 'questions.questionIndex': question.questionIndex }, { $set: { 'questions.$': question } }, { new: true })
         if (testUpdate) return res.status(200).json({ message: 'Question Updated Successfully', data: testUpdate.questions[1] })
         return res.status(400).json({ message: 'There was an error updating the question' })
