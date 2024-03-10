@@ -196,7 +196,7 @@ controllers.updateTest = async (req, res) => {
     try {
         const { id } = req.params;
         const test = await Tests.updateOne({ _id: id }, req.body);
-        if (test) return res.status(200).json({ message: 'Test Added Successfully', test: newTest })
+        if (test) return res.status(200).json({ message: 'Test Added Successfully', test })
         return res.status(400).json({ message: 'Error while updating test' })
     } catch (error) {
         console.error(error);
