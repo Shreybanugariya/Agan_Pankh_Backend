@@ -23,11 +23,12 @@ validators.addQuestionsToTest = (req, res, next) => {
 }
 
 validators.updateQuestion = (req, res, next) => {
-    const { question } = req.body
-    if (!question) return res.reply(message.required_field('question'));
+    const { questionText, testSections, options, questionIndex } = req.body
     if (!req.params.id) return res.reply(message.required_field('id'));
-    if (!question.questionIndex) return res.reply(message.required_field('questionIndex'));
-    if (!question.options || question.options.length < 4) return res.reply(message.required_field('options'));
+    if (!questionText) return res.reply(message.required_field('questionText'));
+    if (!testSections) return res.reply(message.required_field('testSections'));
+    if (!questionIndex) return res.reply(message.required_field('questionIndex'));
+    if (!options || options.length < 4) return res.reply(message.required_field('options'));
     next();
 }
 
