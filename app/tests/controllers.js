@@ -120,9 +120,9 @@ controllers.addAnswerToTest = async (req, res) => {
         const checkTestSession = await TestSession.findOne({ userId, testId }).lean()
         const testResult = await TestResult.findOne({ userId, testId })
         if (!checkTestSession) {
-            if (!testResult) return res.status(400).json({ message: 'Test Not Started'})
+            if (!testResult) return res.status(400).json({ message: 'ટેસ્ટ શરૂ નથી'})
             const score = await submitTestAndCalulateResult({ userId, testId })
-            return res.status(400).json({ message: 'Test Already Completed', score: score})
+            return res.status(400).json({ message: 'ટેસ્ટ પૂર્ણ થઈ ગઈ છે', score: score})
         }
 
         const { questionIndex, selectedOptionIndex, isVisited, isReviewed } = req.body;
