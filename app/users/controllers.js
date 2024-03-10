@@ -122,8 +122,7 @@ controllers.adminLogin = async (req, res) => {
         req.body = _.pick(req.body, ['email', 'password'])
         const user = await User.findOne({ email: req.body.email })
         if (!user) return res.status(400).json({ message: 'User not found' })
-        
-        if (!isMatch) return res.status(400).json({ message: 'Invalid Password' })
+        if (!user.isAdmin) return res.status(401).json({ message: 'In Valid Access' })
         const authToken = jwt.sign({ email: user.email }, JWT_SECRET_KEY, { expiresIn: '300d' })
         user.authToken = authToken
         return res.status(200).json({ message: 'User Login Success', data: user })
