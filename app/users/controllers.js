@@ -77,7 +77,7 @@ controllers.getLoggedInUser = async (req, res) => {
 controllers.adminGetUsers = async (req, res) => {
     try {
         // if (!req.user.isAdmin) return res.status(400).json({ message: 'Access Denied' })
-        const users = await User.find({ isAdmin: false }).lean()
+        const users = await User.find({}).lean()
         const totalUsers = users.length
         const subscribedUsers = users.filter((user) => user.hasPreminum ).length
         return res.status(200).json({ message: 'Users Fetch', data: { totalUsers, subscribedUsers } })
