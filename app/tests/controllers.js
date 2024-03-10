@@ -261,7 +261,7 @@ controllers.publishTest = async (req, res) => {
         const test = await Tests.findById(id)
         if (!test) return res.status(404).json({ message: 'Test not found' })
         const questions = test.questions
-        if (!publishTest) {
+        if (publishTest.toString() == 'false') {
             if (!test.readyToShow) return res.status(400).json({ message: 'Test is already Un-Published' })
             test.readyToShow = false
             await test.save()
