@@ -38,4 +38,8 @@ validators.addImage = (req, res, next) => {
     next();
 }
 
+validators.id = (req, res, next) => {
+    if (!req.params.id) return res.reply(message.required_field('Id'));
+    next();
+}
 module.exports = validators

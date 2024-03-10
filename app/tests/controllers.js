@@ -320,4 +320,14 @@ controllers.getTestsForAdmin = async (req, res) => {
         res.status(400).json({ success: false, error: 'Something Went Wrong' });
     }
 }
+
+controllers.getTestByIdforAdmin = async (req, res) => {
+    try {
+        const test = await Tests.findById(req.params.id);
+        return res.status(200).json({ test })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ success: false, error: 'Something Went Wrong' });
+    }
+}
 module.exports = controllers
