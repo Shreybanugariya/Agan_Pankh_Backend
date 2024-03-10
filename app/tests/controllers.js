@@ -260,13 +260,25 @@ controllers.publishTest = async (req, res) => {
         const { publishTest } = req.query
         const test = await Tests.findById(id)
         if (!test) return res.status(404).json({ message: 'Test not found' })
+        const questions = test.questions
         if (!publishTest) {
             if (!test.readyToShow) return res.status(400).json({ message: 'Test is already Un-Published' })
             test.readyToShow = false
             await test.save()
             return res.status(200).json({ message: 'Test Un-Published Successfully' })
         }
-        if (test.questions.length !== test.totalQuestions) return res.status(400).json({ message: `${ test.totalQuestions} Should be added to Publish the test` })
+        if (questions.length !== test.totalQuestions) return res.status(400).json({ message: `Total ${test.totalQuestions} Questions should be added before to Publish the test` })
+        const reasoningQuestions = []
+        const qaQuestions = []
+        const englishQuestions = []
+        const gujQuestions = []
+        for (const q of questions) {
+            if (q.testSections == 'R') reasoningQuestions.push(q)
+            if (q.testSections == 'QA') qaQuestions.push(q)
+            if (q.testSections == 'E') englishQuestions.push(q)
+            if (q.testSections == 'G') gujQuestions.push(q)
+        }
+        test.questions = [...reasoningQuestions, ...qaQuestions, ...englishQuestions, ...gujQuestions]
         test.readyToShow = true
         await test.save()
         return res.status(200).json({ message: 'Test Published Successfully' })
