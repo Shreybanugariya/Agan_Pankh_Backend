@@ -24,10 +24,6 @@ controllers.getTestLists = async (req, res) => {
             } else if (user.hasPreminum && t.testIndex === 0) t.isLocked = false
             else if (user.currentTestIndex === t.testIndex && t.testIndex !== 0) t.isLocked = false 
             if (!t.readyToShow) t.isLocked = true
-            if (['hirenjogi.82@gmail.com', 'tejbanugariya@gmail.com', 'shreybanugariya@gmail.com', 'kandarpdangi@gmail.com'].includes(req.user.email) && t.testIndex == 1) {
-                t.isLocked = false
-                t.readyToShow = true
-            }
         }
         return res.reply(message.success('Test Fetch'), { data: tests })
     } catch (error) {
