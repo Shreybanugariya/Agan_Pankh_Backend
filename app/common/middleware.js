@@ -21,22 +21,16 @@ const authenticateUser = async (req, res, next) => {
     }
 };
 
-const adminAuthMiddleware = async (req, res) => {
+const adminAuthMiddleware = async (req, res, next) => {
   const token = req.header('Authorization');
-  console.log(token)
   if (!token) return res.status(200).json({ error: 'Unauthorized - No token provided' });
   
   try {
     const decoded = jwt.verify(token, JWT_SECRET_KEY);
-    console.log(decoded);	
-    // const { email } = decoded
-    // if (!email || email !== 'admin@aganpankh.admin.com') return res.status(401).json({ error: 'Unauthorized' });
-    // const user = await User.findOne({ email });
-    // if (!user) return res.status(401).json({ error: 'Unauthorized - Invalid user' });
-    // if (!user.isAdmin) return res.status(401).json({ error: 'Access Denied' });
+    const { email } = decoded
+    if (!email || email !== 'admin@aganpankh.admin.com') return res.status(401).json({ error: 'Unauthorized' });
     next();
   } catch (error) {
-    console.log(error)
     return res.status(401).json({ error: 'Unauthorized - Invalid token' });
   } 
 };
