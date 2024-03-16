@@ -15,6 +15,7 @@ validators.addQuestionsToTest = (req, res, next) => {
     } else {
         for (const question of questions) {
             if (!question.options || question.options.length < 4) return res.status(400).json({ message: 'Options cannot be less than 4' });
+            if (question.options.length > 4) return res.status(400).json({ message: 'Options cannot be more than 4' });
             if (!question.testSections || !['R', 'QA', 'E', 'G'].includes(question.testSections)) return res.status(400).json({ message: 'Invalid test section' });
             if (!question.questionIndex) return res.reply(message.required_field('questionIndex'));
         }
@@ -29,6 +30,7 @@ validators.updateQuestion = (req, res, next) => {
     if (!testSections) return res.reply(message.required_field('testSections'));
     if (!questionIndex) return res.reply(message.required_field('questionIndex'));
     if (!options || options.length < 4) return res.reply(message.required_field('options'));
+    if (question.options.length > 4) return res.status(400).json({ message: 'Options cannot be more than 4' });
     next();
 }
 

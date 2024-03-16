@@ -14,7 +14,7 @@ router.get('/admin/get-test/:id', validators.id, controllers.getTestByIdforAdmin
 router.post('/admin/add-test', validators.addTest, controllers.addTest)
 router.put('/admin/update-test/:id', validators.id, validators.addTest, controllers.updateTest)
 router.post('/admin/add-question/:id', validators.addQuestionsToTest, controllers.addQuestionsToTest)
-router.put('/admin/update-question/:id', validators.updateQuestion, controllers.updateQuestion)
+router.put('/admin/update-question/:id', adminAuthMiddleware, validators.updateQuestion, controllers.updateQuestion)
 router.get('/admin/publish-test/:id', controllers.publishTest)
 router.post('/admin/add-image', validators.addImage, controllers.addImagesToTest)
 router.get('/admin/get-image/:id', controllers.getTestImages)
