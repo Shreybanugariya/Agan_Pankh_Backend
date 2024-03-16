@@ -23,6 +23,7 @@ const authenticateUser = async (req, res, next) => {
 
 const adminAuthMiddleware = async (req, res) => {
   const token = req.header('Authorization');
+  console.log(token)
   if (!token) return res.status(200).json({ error: 'Unauthorized - No token provided' });
   
   try {
@@ -35,6 +36,7 @@ const adminAuthMiddleware = async (req, res) => {
     // if (!user.isAdmin) return res.status(401).json({ error: 'Access Denied' });
     next();
   } catch (error) {
+    console.log(error)
     return res.status(401).json({ error: 'Unauthorized - Invalid token' });
   } 
 };
