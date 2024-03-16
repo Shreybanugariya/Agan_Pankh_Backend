@@ -30,7 +30,7 @@ validators.updateQuestion = (req, res, next) => {
     if (!testSections) return res.reply(message.required_field('testSections'));
     if (!questionIndex) return res.reply(message.required_field('questionIndex'));
     if (!options || options.length < 4) return res.reply(message.required_field('options'));
-    if (question.options.length > 4) return res.status(400).json({ message: 'Options cannot be more than 4' });
+    if (options.length > 4) return res.status(400).json({ message: 'Options cannot be more than 4' });
     next();
 }
 
