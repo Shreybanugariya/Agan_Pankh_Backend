@@ -4,11 +4,11 @@ const optionSchema = new mongoose.Schema({
     optionText: { type: String, required: true },
     optImage: { type: String },
     isCorrect: { type: Boolean, default: false },
-  });
+});
   
 const questionSchema = new mongoose.Schema({
     questionText: { type: String, required: true },
-    testSections: { type: String, enum: ['R', 'QA', 'E', 'G'], required: true, default: 'R'}, // R - Reasoning, QA - Quantitative Apptitute, E - English, G - Gujarati
+    testSections: { type: String, enum: ['R', 'QA', 'E', 'G', 'GS'], required: true, default: 'R'}, // R - Reasoning, QA - Quantitative Apptitute/Maths, E - English, G - Gujarati, GS - General Studies + Current Affairs
     queImage: { type: String },
     specialImage: { type: String },
     options: [optionSchema],

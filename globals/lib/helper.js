@@ -20,9 +20,10 @@ _.pick = function (obj, array) {
 };
 
 _.checkPromo = (code) =>{
-    const codes = ['SPCF2024', 'KDVS2024', 'SD2024', 'JM2024', 'AGANPANKH2024']
-    if (codes.includes(code)) return true
-    return false
+    // const codes = ['SPCF2024', 'KDVS2024', 'SD2024', 'JM2024', 'AGANPANKH2024']
+    // if (codes.includes(code)) 
+    return true
+    // return false
 }
 
 _.encryptPassword = function (password) {
@@ -47,37 +48,3 @@ _.encryptPassword = function (password) {
     // console.log(update)
 
 // })()
-
-// ************************* To Add Users ****************************
-
-// const csvtojson = require('csvtojson');
-// const fs = require('fs');
-
-// // Initialize an empty array to store data from all sheets
-// let allData = [];
-// const csvFilePath = 'your_file.csv';
-// csvtojson()
-//   .fromFile(csvFilePath)
-//   .then((jsonObj) => {
-//     jsonObj.forEach((entry) => {
-//     //   entry.name = `${entry['Sur Name']} ${entry['First Name']} ${entry['Last Name']}`;
-//       delete entry['Sur Name'];
-//       delete entry['First Name'];
-//       delete entry['Last Name'];
-//     });
-
-//     // Push the modified data to the allData array
-//     allData = allData.concat(jsonObj);
-
-//     // Convert the JavaScript object to JSON format
-//     const jsonData = JSON.stringify(allData, null, 2);
-
-//     console.log(jsonData);
-//     fs.writeFileSync('output.json', jsonData);
-//   })
-//   .catch((err) => {
-//     console.error('Error converting CSV to JSON:', err);
-//   });
-
-
-module.exports = _
