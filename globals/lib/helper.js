@@ -30,21 +30,4 @@ _.encryptPassword = function (password) {
     return crypto.createHmac('sha256', JWT_SECRET_KEY).update(password).digest('hex');
 };
 
-// ********************** To Adjust the test questions order **************************
-// ;(async() => {
-    // const Test = require('./app/tests/model')
-
-    // const test2 = await Test.findById('65ca378690e5a8fa6d9b0656')
-    // const newQuestions = []
-    // for (const [index, q] of test2.questions.entries()) {
-    //     q.questionIndex = index + 1
-    //     if (q.questionIndex < 41) q.testSections = 'R'
-    //     if (q.questionIndex > 40 && q.questionIndex < 71) q.testSections = 'QA'
-    //     if (q.questionIndex > 70  && q.questionIndex < 86) q.testSections = 'E'
-    //     if (q.questionIndex > 85) q.testSections = 'G'
-    //     newQuestions.push(q)
-    // }
-    // const update = await Test.updateOne({ _id: '65ca378690e5a8fa6d9b0656' }, { questions: newQuestions })
-    // console.log(update)
-
-// })()
+module.exports = _

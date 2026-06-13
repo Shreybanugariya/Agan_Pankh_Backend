@@ -6,7 +6,7 @@ mongodb.initialize = async () => {
     try{
         await mongoose.connect(process.env.DB_URL)
         log.yellow('DB connected!!')
-    }catch(error) {
+    } catch(error) {
         throw new Error(error)
     }
 }
